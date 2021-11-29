@@ -3,7 +3,7 @@ create table corsista(
     nome_corsista varchar2(30) not null,
     cognome_corsista varchar2(30) not null,
     cod_corsista int,
-    precedenti_formativi boolean not null,
+    precedenti_formativi int not null,
     constraint p_cod_corsista primary key(cod_corsista));
 
 create table docente(
