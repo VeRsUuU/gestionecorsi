@@ -13,7 +13,7 @@ create table docente(
     cod_docente int,
     constraint p_cod_docente primary key(cod_docente));
 
-create table admin(
+create table amministratore(
     nome_admin varchar2(30) not null,
     cognome_admin varchar2(30) not null,
     username varchar2(30),
