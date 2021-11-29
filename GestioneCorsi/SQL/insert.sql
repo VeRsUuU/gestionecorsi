@@ -1,11 +1,11 @@
-insert into docente values('Benito', 'Bassano', 'CV1.png', 1);
-insert into docente values('Paolo', 'Rossi', 'CV2.png', 2);
-insert into docente values('Carmela', 'Neri', 'CV3.png', 3);
-insert into docente values('Mario', 'Rossi', 'CV4.png', 4);
-insert into docente values('Martina', 'Franchi', 'CV5.png', 5);
-insert into docente values('Ricardo', 'Fontana', 'CV6.png', 6);
-insert into docente values('Nicola', 'Antonutti', 'CV7.png', 7);
-insert into docente values('Claudia', 'Specchi', 'CV8.png', 8);
+insert into docente values(1,'Benito', 'Bassano', 'CV1.png');
+insert into docente values(2,'Paolo', 'Rossi', 'CV2.png');
+insert into docente values(3,'Carmela', 'Neri', 'CV3.png');
+insert into docente values(4,'Mario', 'Rossi', 'CV4.png');
+insert into docente values(5,'Martina', 'Franchi', 'CV5.png');
+insert into docente values(6,'Ricardo', 'Fontana', 'CV6.png');
+insert into docente values(7,'Nicola', 'Antonutti', 'CV7.png');
+insert into docente values(8,'Claudia', 'Specchi', 'CV8.png');
 
 insert into amministratore values('Massimo', 'Rossi', 'max', 'pass01');
 insert into amministratore values('Gianni', 'Verdi', 'gianni', 'pass02');
