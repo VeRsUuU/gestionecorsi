@@ -7,10 +7,10 @@ create table corsista(
     constraint p_cod_corsista primary key(cod_corsista));
 
 create table docente(
+	cod_docente int,
     nome_docente varchar2(30) not null,
     cognome_docente varchar2(30) not null,
     cv_docente varchar2(200) not null,
-    cod_docente int,
     constraint p_cod_docente primary key(cod_docente));
 
 create table amministratore(
