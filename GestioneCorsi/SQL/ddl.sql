@@ -1,4 +1,4 @@
-
+ 
 create table corsista(
     nome_corsista varchar2(30) not null,
     cognome_corsista varchar2(30) not null,
