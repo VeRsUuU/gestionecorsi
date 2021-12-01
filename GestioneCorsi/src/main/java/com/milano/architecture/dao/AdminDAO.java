@@ -20,7 +20,7 @@ public class AdminDAO implements DAOConstants{
 	
 	private String SELECT_ADMIN_BYID="select * from amministratore where username=?";
 	
-	@Override// per implemento GEnerciDAO
+	//@Override// per implemento GEnerciDAO
 	public Admin getById(Connection conn, Admin model) throws DAOException {
 		Admin admin=null;
 		PreparedStatement ps;
