@@ -5,7 +5,7 @@ public class Corsista {
 	private String nome_corsista;
 	private String cognome_corsista;
 	private long cod_corsista;
-	private int precedenti_formativi;
+	private byte precedenti_formativi;
 	
 	public String getNome_corsista() {
 		return nome_corsista;
@@ -25,10 +25,10 @@ public class Corsista {
 	public void setCod_corsista(long cod_corsista) {
 		this.cod_corsista = cod_corsista;
 	}
-	public int getPrecedenti_formativi() {
+	public byte getPrecedenti_formativi() {
 		return precedenti_formativi;
 	}
-	public void setPrecedenti_formativi(int precedenti_formativi) {
+	public void setPrecedenti_formativi(byte precedenti_formativi) {
 		this.precedenti_formativi = precedenti_formativi;
 	}
 	
