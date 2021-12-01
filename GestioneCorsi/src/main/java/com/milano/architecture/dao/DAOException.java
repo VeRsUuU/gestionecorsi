@@ -9,7 +9,7 @@ public class DAOException extends SQLException {
 	private final static int ORA1017 = 1017;
 	private final static int ORA17002 = 17002;
 	private final static int ORA00001 = 0;
-
+ 
 	private String message;
 
 	@Override
