@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.milano.businesscomponent.CorsoBC;
 import com.milano.businesscomponent.model.Corso;
 
 public class Validazione {
@@ -42,9 +43,9 @@ public class Validazione {
 				
 				if(date[0] != null && date[1] != null) {
 					
+				CorsoBC cBC = new CorsoBC();
 				
-				
-				Corso c = CorsoBC.getById(key);
+				Corso c = cBC.get(key);
 				if(date[0]!=null && date[1]!=null) {
 				if(date[0].before(c.getDataInizio())
 						|| date[1].after(c.getDataFine())
@@ -59,5 +60,7 @@ public class Validazione {
 		
 		
 		return errori;
+	}
+}
 	}
 }
