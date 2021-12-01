@@ -45,19 +45,15 @@ public class Validazione {
 				
 				if (date[0] != null && date[1] != null) {
 
-					if ((date[0].before(c.getDataInizio()) || date[1].before(c.getDataInizio())) || (date[1].after(c.getDataFine()) || date[0].after(c.getDataFine()))) {
+					if (date[0].before(c.getDataInizio())|| date[1].after(c.getDataFine())) 
 						errori.put("errorData_" + c.getNome(),
 								"Errore nell'inserimento della data relativa al corso: " + c.getNome());
-						if(date[0].after(date[1])) {
+					
+						if(date[0].after(date[1]))
 							errori.put("errorData_" + c.getNome(),
-									"Inverti le date: " + c.getNome());
-						}
-					} else {
-						if(date[0].after(date[1])) {
-							errori.put("errorData_" + c.getNome(),
-									"Inverti le date: " + c.getNome());
-						}
-					}
+									"INVERETI KEKKO OKAY LEZ GOOOOOOO: " + c.getNome());
+					
+							
 				} else {
 					errori.put("errorDataMancante" + c.getNome(),
 							"Errore data mancante relativa al corso: " + c.getNome());
