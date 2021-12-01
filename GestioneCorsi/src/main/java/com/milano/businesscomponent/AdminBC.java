@@ -16,7 +16,11 @@ import com.milano.businesscomponent.model.Admin;
 
 
 public class AdminBC {
-
+	/*
+	 * create by
+	 * Raijon bida
+	 * 
+	 * */
 	private Connection conn;
 	
 	public AdminBC() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
