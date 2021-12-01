@@ -11,14 +11,12 @@ import com.milano.architecture.dbaccess.DBAccess;
 import com.milano.businesscomponent.model.Corsista;
 
 public class CorsistaBC {
-
-	private Connection conn;
 	
 	public CorsistaBC() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		conn = DBAccess.getConnection();
 	}
 	
-	public void create (Corsista corsista) throws DAOException {
+	public void create (Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
 			corsistaDAO.create(conn, corsista);
@@ -27,7 +25,8 @@ public class CorsistaBC {
 		}
 	}
 	
-	public Corsista getById(Corsista corsista) throws DAOException {
+	public Corsista getById(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
 			return corsistaDAO.getById(conn, corsista);
@@ -39,7 +38,8 @@ public class CorsistaBC {
 	}
 
 	
-	public void delete(Corsista corsista) throws DAOException {
+	public void delete(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
 			corsistaDAO.delete(conn, corsista);
@@ -49,9 +49,9 @@ public class CorsistaBC {
 		}
 	}
 	
-	public Corsista[] getAll() throws DAOException{
+	public Corsista[] getAll() throws DAOException, ClassNotFoundException, IOException{
+		Connection conn = DBAccess.getConnection();
 		Corsista[] corsisti = null;
-		
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
 			corsisti = corsistaDAO.getAll(conn);
