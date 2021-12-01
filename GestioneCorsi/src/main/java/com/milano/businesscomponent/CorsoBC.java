@@ -11,14 +11,16 @@ import com.milano.businesscomponent.model.Corso;
 
 public class CorsoBC {
 
-	public void getById(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+	public void getById(Corso corso, long id) throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			corsoDAO.getById(DBAccess.getConnection(), corso);
+			corsoDAO.getById(DBAccess.getConnection(), id);
 		} catch (SQLException e) {
 			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
 		}
-		DBAccess.closeConnection();
+
 	}
 
 	public ArrayList<Corso> getAll() throws DAOException, ClassNotFoundException, IOException {

@@ -60,11 +60,11 @@ public class CorsoDAO {
 
 	}
 
-	public Corso getById(Connection conn, Corso model) throws DAOException {
+	public Corso getById(Connection conn, long id) throws DAOException {
 		Corso corso = null;
 		try {
 			PreparedStatement ps = conn.prepareStatement(SELECT_CORSI_BYID);
-			ps.setLong(1, model.getCod());
+			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				corso = new Corso();
