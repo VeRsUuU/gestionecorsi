@@ -21,12 +21,16 @@ create table amministratore(
     constraint p_username_admin primary key(username));
 
 create table corso(
-    cod_corso int primary key references docente(cod_docente),
-    nome_corso varchar2(30) not null,
+    cod_corso int,
+    cod_docente int,
+    nome_corso varchar2(50) not null,
     data_inizio date not null,
     data_fine date not null,
     commento varchar2(200),
-    aula_corso varchar2(30) not null);
+    aula_corso varchar2(30) not null,
+    costo_corso number(7,2) not null,
+    constraint p_cod_corso primary key(cod_corso),
+    constraint f_cod_docente foreign key(cod_docente) references docente(cod_docente));
 
 create table corso_corsista(
     cod_corso int,
