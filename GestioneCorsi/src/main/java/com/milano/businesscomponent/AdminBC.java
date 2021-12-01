@@ -21,15 +21,13 @@ public class AdminBC {
 	 * Raijon bida
 	 * 
 	 * */
-	private Connection conn;
 	
-	public AdminBC() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		conn = DBAccess.getConnection();
-	}
 	
-	public Admin getById(Admin admin) throws DAOException {
+	
+	public Admin getById(Admin admin) throws DAOException, ClassNotFoundException, IOException {
+		AdminDAO a=new AdminDAO();
 		try {
-			return AdminDAO.getFactory().getById(conn, admin);
+			return a.getById(DBAccess.getConnection(), admin);
 		}catch(SQLException exc) {
 			throw new DAOException(exc);
 		}finally {
