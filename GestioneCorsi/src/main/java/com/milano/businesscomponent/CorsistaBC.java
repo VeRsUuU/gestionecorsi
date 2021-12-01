@@ -1,8 +1,6 @@
 package com.milano.businesscomponent;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.milano.architecture.dao.CorsistaDAO;
@@ -12,54 +10,51 @@ import com.milano.businesscomponent.model.Corsista;
 
 public class CorsistaBC {
 	
-	public CorsistaBC() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-	}
-	
 	public void create (Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
-		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
-			corsistaDAO.create(conn, corsista);
+			corsistaDAO.create(DBAccess.getConnection(), corsista);
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
+		} finally {
+			DBAccess.closeConnection();
 		}
 	}
 	
 	public Corsista getById(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
-		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
-			return corsistaDAO.getById(conn, corsista);
+			return corsistaDAO.getById(DBAccess.getConnection(), corsista);
 		}catch(SQLException exc) {
 			throw new DAOException(exc);
-		}finally {
+		} finally {
 			DBAccess.closeConnection();
 		}
 	}
 
 	
 	public void delete(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
-		Connection conn = DBAccess.getConnection();
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
-			corsistaDAO.delete(conn, corsista);
-
+			corsistaDAO.delete(DBAccess.getConnection(), corsista);
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
+		} finally {
+			DBAccess.closeConnection();
 		}
 	}
 	
 	public Corsista[] getAll() throws DAOException, ClassNotFoundException, IOException{
-		Connection conn = DBAccess.getConnection();
 		Corsista[] corsisti = null;
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
-			corsisti = corsistaDAO.getAll(conn);
+			corsisti = corsistaDAO.getAll(DBAccess.getConnection());
 			
 		} catch(SQLException sql) {
 			throw new DAOException(sql);
+		} finally {
+			DBAccess.closeConnection();
 		}
-		
 		return corsisti;
 	}
 	
