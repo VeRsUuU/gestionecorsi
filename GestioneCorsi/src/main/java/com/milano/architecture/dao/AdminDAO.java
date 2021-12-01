@@ -18,14 +18,15 @@ public class AdminDAO implements DAOConstants{
 	
 	
 	
-	private String SELECT_ADMIN_BYID="select * from amministratore where username=?";
+	private String SELECT_ADMIN_BYUSERNAME="select * from amministratore where username=?";
 	
 	//@Override// per implemento GEnerciDAO
 	public Admin getById(Connection conn, Admin model) throws DAOException {
+	
 		Admin admin=null;
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement(SELECT_ADMIN_BYID);
+			ps = conn.prepareStatement(SELECT_ADMIN_BYUSERNAME);
 			ps.setString(1, model.getUsername());
 
 			ResultSet rs = ps.executeQuery();
@@ -34,7 +35,8 @@ public class AdminDAO implements DAOConstants{
 				admin.setNomeAdmin(rs.getString(1));
 				admin.setCognomeAdmin(rs.getString(2));
 				admin.setPassword(rs.getString(3));
-				admin.setUsername(rs.getString(4));				
+				admin.setUsername(rs.getString(4));	
+		
 			}
 
 		} catch (SQLException sql) {
