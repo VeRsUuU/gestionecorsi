@@ -11,6 +11,11 @@ import com.milano.architecture.dao.DAOException;
 import com.milano.businesscomponent.model.Admin;
 
 public class AdminDAO implements DAOConstants{
+	/*
+	 * create by
+	 * Danilo Cordova 
+	 * 
+	 * */
 	
 	public static AdminDAO getFactory() throws DAOException {
 		return new AdminDAO();
