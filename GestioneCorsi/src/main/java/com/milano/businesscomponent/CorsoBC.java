@@ -13,34 +13,30 @@ import com.milano.businesscomponent.model.Corso;
 
 public class CorsoBC {
 
-	private Connection conn;
-
-	public CorsoBC() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		conn = DBAccess.getConnection();
-	}
-
-	public void getById(Corso corso) throws DAOException {
+	public void getById(Corso corso) throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			corsoDAO.getById(conn, corso);
+			corsoDAO.getById(DBAccess.getConnection(), corso);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
+		DBAccess.closeConnection();
 	}
 
-	public ArrayList<Corso> getAll() throws DAOException {
+	public ArrayList<Corso> getAll() throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			return corsoDAO.getAll(conn);
+			return corsoDAO.getAll(DBAccess.getConnection());
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
+
 	}
 
-	public ArrayList<Corso> getCorsoPiuFrequentato() throws DAOException {
+	public ArrayList<Corso> getCorsoPiuFrequentato() throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			return corsoDAO.getCorsoPiuFrequentato(conn);
+			return corsoDAO.getCorsoPiuFrequentato(DBAccess.getConnection());
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
