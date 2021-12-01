@@ -1,7 +1,5 @@
 package com.milano.businesscomponent.model;
 
-import java.util.Date;
-
 public class CorsoCorsista {
 	private long codCorso;
 	private long codCorsista;
