@@ -3,56 +3,69 @@ package com.milano.businesscomponent.model;
 import java.util.Date;
 
 public class Corso {
-	private long CodCorso;
-	private String NomeCorso;
-	private Date DataInizioCorso;
-	private Date DataFineCorso;
-	private double CostoCorso;
-	private String CommentiCorso;
-	private String AulaCorso;
-	
-	public long getCodCorso() {
-		return CodCorso;
-	}
-	public void setCodCorso(long codCorso) {
-		CodCorso = codCorso;
-	}
-	public String getNomeCorso() {
-		return NomeCorso;
-	}
-	public void setNomeCorso(String nomeCorso) {
-		NomeCorso = nomeCorso;
-	}
-	public Date getDataInizioCorso() {
-		return DataInizioCorso;
-	}
-	public void setDataInizioCorso(Date dataInizioCorso) {
-		DataInizioCorso = dataInizioCorso;
-	}
-	public Date getDataFineCorso() {
-		return DataFineCorso;
-	}
-	public void setDataFineCorso(Date dataFineCorso) {
-		DataFineCorso = dataFineCorso;
-	}
-	public double getCostoCorso() {
-		return CostoCorso;
-	}
-	public void setCostoCorso(double costoCorso) {
-		CostoCorso = costoCorso;
-	}
-	public String getCommentiCorso() {
-		return CommentiCorso;
-	}
-	public void setCommentiCorso(String commentiCorso) {
-		CommentiCorso = commentiCorso;
-	}
-	public String getAulaCorso() {
-		return AulaCorso;
-	}
-	public void setAulaCorso(String aulaCorso) {
-		AulaCorso = aulaCorso;
-	}
-	
+
+    private long cod;
+    private String nome;
+    private Date dataInizio;
+    private Date dataFine;
+    private double costo;
+    private String commenti;
+    private String aula;
+
+    public long getCod() {
+        return cod;
+    }
+
+    public void setCod(long cod) {
+        this.cod = cod;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataInizio() {
+        return dataInizio;
+    }
+
+    public void setDataInizio(Date dataInizio) {
+        this.dataInizio = dataInizio;
+    }
+
+    public Date getDataFine() {
+        return dataFine;
+    }
+
+    public void setDataFine(Date dataFine) {
+        this.dataFine = dataFine;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public String getCommenti() {
+        return commenti;
+    }
+
+    public void setCommenti(String commenti) {
+        this.commenti = commenti;
+    }
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
 
 }
