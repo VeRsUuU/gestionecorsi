@@ -12,6 +12,8 @@ public class Corso {
     private String commenti;
     private String aula;
 
+    
+    
     public long getCod() {
         return cod;
     }
