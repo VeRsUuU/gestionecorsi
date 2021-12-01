@@ -11,7 +11,7 @@ import com.milano.businesscomponent.model.Corso;
 
 public class CorsoBC {
 
-	public void getById(Corso corso, long id) throws DAOException, ClassNotFoundException, IOException {
+	public void getById(long id) throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
 			corsoDAO.getById(DBAccess.getConnection(), id);
