@@ -14,19 +14,19 @@ public class Docente {
 		this.codDocente = codDocente;
 	}
 
-	public String getNome() {
+	public String getNomeDocente() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNomeDocente(String nome) {
 		this.nome = nome;
 	}
 
-	public String getCognome() {
+	public String getCognomeDocente() {
 		return cognome;
 	}
 
-	public void setCognome(String cognome) {
+	public void setCognomeDocente(String cognome) {
 		this.cognome = cognome;
 	}
 
