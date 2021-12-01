@@ -12,6 +12,7 @@ public class Admin {
 		return nomeAdmin;
 	}
 	
+	
 	public void setNomeAdmin(String nomeAdmin) {
 		this.nomeAdmin = nomeAdmin;
 	}
