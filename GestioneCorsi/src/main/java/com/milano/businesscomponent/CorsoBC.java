@@ -27,6 +27,8 @@ public class CorsoBC {
 			return corsoDAO.getAll(DBAccess.getConnection());
 		} catch (SQLException e) {
 			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
 		}
 
 	}
@@ -37,6 +39,8 @@ public class CorsoBC {
 			return corsoDAO.getCorsoPiuFrequentato(DBAccess.getConnection());
 		} catch (SQLException e) {
 			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
 		}
 	}
 
