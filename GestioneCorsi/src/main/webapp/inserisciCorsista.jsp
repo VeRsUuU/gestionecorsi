@@ -22,6 +22,7 @@
 	HashMap<Integer, Integer> map = AdminFacade.getIstance().getIscritti();
 	ArrayList<Corso> corsi = AdminFacade.getIstance().getAllCorso();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	List<String> listaCorsi = (List<String>) request.getAttribute("corsi");
 
 	HashMap<String, String> errori = new HashMap<String, String>();
 
@@ -38,7 +39,7 @@
 		<div class="row" style="margin-top: 10px">
 		<div class="form-group col-md-6">
 			<label for="nome">Nome 
-			<input class="form-control" type="text" name="nome">
+			<input class="form-control" type="text" name="nome" <% if(request.getAttribute("nome") != null) {%> value="<%= request.getAttribute("nome") %> <% }%>">
 		</label>
 		</div>
 		<div class="col-md-4" style="padding-top: 30px; color: red; margin-left: 30px">
@@ -53,8 +54,8 @@
 
 		<div class="row">
 		<div class="form-group col-md-6" >
-			<label for="nome">Cognome 
-			<input class="form-control" type="text" name="cognome">
+			<label for="cognome">Cognome 
+			<input class="form-control" type="text" name="cognome" <% if(request.getAttribute("cognome") != null) {%> value="<%= request.getAttribute("cognome") %> <% }%>">
 		</label>
 		</div>
 		<div class="col-md-4" style="padding-top: 30px;color: red; margin-left: 30px">
@@ -65,7 +66,16 @@
 			<%}%>
 		</div>
 		</div>
+		<h3 style="margin-left: 80px">Corsi disponibili</h3>
+		<hr>
 		
+		<div class="row">
+		<%
+		if (errori.containsKey("nullPointerException")) {
+		%>
+		<p style="color: red; margin-bottom: 50px;"><%=errori.get("nullPointerException")%></p>
+			<%}%>
+		</div>
 		
 		
 			<%
@@ -80,6 +90,14 @@
 			<input type="checkbox"
 				onclick="ShowHideDiv('divToHide<%=corso.getCod()%>')"
 				name="numeroCorso" class="form-check-input" value="<%=corso.getCod()%>"
+				
+				<% 
+				
+				if(listaCorsi != null && listaCorsi.contains(Long.toString(corso.getCod()))){
+					out.print("checked");
+				}
+				%>
+				
 				<%if (map.containsKey(i)) {
 					if (map.get(i) == 12) {
 						out.print("disabled");
@@ -126,10 +144,19 @@
 				}
 				%>
 				</div>
+
 				</div>
 			
 			
-			<div id="divToHide<%=corso.getCod()%>" class="col-md-10" style="display: none;">
+			<div id="divToHide<%=corso.getCod()%>" class="col-md-10" 
+			<% if(listaCorsi != null && listaCorsi.contains(Long.toString(corso.getCod()))){ %>
+					style = "display: block;"
+					
+				<% } else{ %>
+					style = "display: none;"
+				
+				<% } %>
+				>
 			<div class="row" style="margin-bottom: 40px">
 			<div class="col-md-4">
 				<label  for="dataInizio<%=corso.getCod()%>">Data inizio</label> 

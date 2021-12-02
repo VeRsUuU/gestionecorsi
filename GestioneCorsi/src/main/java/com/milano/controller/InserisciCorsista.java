@@ -3,6 +3,7 @@ package com.milano.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,8 +39,18 @@ public class InserisciCorsista extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		
+		List<String> list = new ArrayList<String>();
+		
+		if(request.getParameterValues("numeroCorso") != null) {
 		String[] corsi = request.getParameterValues("numeroCorso");
-		List<String> list = Arrays.asList(corsi);
+		list = Arrays.asList(corsi);
+		}
+		
+		request.setAttribute("nome", nome);
+		request.setAttribute("cognome", cognome);
+		request.setAttribute("corsi", list);
+		
+		System.out.println(list);
 		
 		byte radio = Byte.parseByte(request.getParameter("precedenti"));
 		
@@ -58,6 +69,9 @@ public class InserisciCorsista extends HttpServlet {
 				date[1] = null;
 			}
 			
+			request.setAttribute("dataInizio"+id, date[0]);
+			request.setAttribute("dataFine"+id, date[1]);
+			
 			mappa.put(Integer.parseInt(id), date);
 		}
 		
@@ -65,9 +79,14 @@ public class InserisciCorsista extends HttpServlet {
 		HashMap<String, String> errori = new HashMap<String, String>();
 		try {
 			errori = Validazione.valida(nome, cognome, mappa);
+			
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		if(list.isEmpty()) {
+			errori.put("nullPointerException", "Devi inserire almeno un corso se no ti da NUUUUULLLLLL POINter eXCEptioNNNNNNNN");
 		}
 		
 		if(errori.isEmpty()) {
