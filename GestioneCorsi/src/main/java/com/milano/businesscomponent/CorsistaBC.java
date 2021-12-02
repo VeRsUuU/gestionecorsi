@@ -73,4 +73,15 @@ public class CorsistaBC {
 		return corsi;
 	}
 
+	public void disicrivi(long id) throws ClassNotFoundException, IOException, DAOException {
+		try {
+			CorsistaDAO cdao = new CorsistaDAO();
+			cdao.disiscrivi(DBAccess.getConnection(), id);
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
+
 }
