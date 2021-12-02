@@ -40,7 +40,7 @@ doc = AdminFacade.getIstance().getMaxCorsi();
 <p>numero totali corsisti <%= tot %></p>
 <p>nome dell'ultimo corso : <%= corsodt.getNome() %>, data inizio dell'ultimo corso : <%= corsodt.getDataInizio() %> </p>
 <p>numero totali commenti presenti : <%= totCommenti %></p>
-<p>docente max corsi :<%=doc %>
+<p>docente max corsi :<%=doc.getNomeDocente() %>
 
 
 

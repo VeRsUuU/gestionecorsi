@@ -73,11 +73,7 @@ public class CorsoDAO {
 		try {
 			CorsoCorsistaDAO ccDao = new CorsoCorsistaDAO();
 			HashMap<Integer, Integer> prenotazioni = ccDao.getMap(conn);
-
-			System.out.println(prenotazioni.get(3));
-
 			int max = Collections.max(prenotazioni.values());
-
 			corsi = new ArrayList<Integer>();
 			for (Entry<Integer, Integer> entry : prenotazioni.entrySet()) {
 				if (entry.getValue() == max) {
