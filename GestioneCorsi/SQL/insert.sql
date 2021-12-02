@@ -25,3 +25,7 @@ insert into corso values(9, 4,'Fondamenti di sicurezza', TO_DATE('03/03/2022','d
 insert into corso values(10, 7,'Sistemi operativi', TO_DATE('25/02/2022','dd/mm/yyyy'), TO_DATE('25/05/2022','dd/mm/yyyy'), 'Principi dei sistemi operativi, concorrenza, Scheduling e dispatch, gestione della memoria, macchine virtuali', 'A10', 179.99);
 insert into corso values(11, 2,'Programmazione procedurale ad oggetti', TO_DATE('09/09/2021','dd/mm/yyyy'), TO_DATE('16/12/2021','dd/mm/yyyy'), 'definizioni e nozioni di base del linguaggio C, definizioni e nozioni di base del linguaggio C++, libreria STL', 'A11', 129.99);
 insert into corso values(12, 7,'Programmazione di dispositivi mobili', TO_DATE('15/02/2022','dd/mm/yyyy'), TO_DATE('13/05/2022','dd/mm/yyyy'), 'Introduzione ai dispositivi mobili, Elementi di base e elementi avanzati nella programmazione di dispositivi mobili', 'A12', 149.99);
+
+insert into corsista values('Simone', 'Bianchi', corsista_seq.nextval, 1);
+insert into corsista values('Gianni', 'Rossi', corsista_seq.nextval, 0);
+insert into corsista values('Claudio', 'Verdi', corsista_seq.nextval, 1);
