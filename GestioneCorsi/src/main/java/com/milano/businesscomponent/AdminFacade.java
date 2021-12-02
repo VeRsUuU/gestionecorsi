@@ -67,10 +67,16 @@ public class AdminFacade {
 		return corsoBC.getCorsoPiuFrequentato();
 
 	}
-
+	
 	public Corso getDataUltimoCorso() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.dataInizioUltimoCorso();
+	}
+	
+	public Integer getTotCommenti() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC();
+		Integer totCommenti=corsoBC.getotCommenti();
+		return totCommenti;
 	}
 
 	// metodi corsista
@@ -109,11 +115,12 @@ public class AdminFacade {
 		return cbc.getCorsi(id);
 	}
 
-	public void disiscrivi(long idCorso, long idCorsista) throws ClassNotFoundException, DAOException, IOException {
+	public Integer getotCorsisti() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsistaBC cbc = new CorsistaBC();
-		cbc.disicrivi(idCorso, idCorsista);
+		Integer totCorsisti=cbc.getTotCorsisti();
+		return totCorsisti;
 	}
-
+	
 	// metodi Corso_Corsista
 
 	public HashMap<Integer, Integer> getIscritti()
