@@ -12,19 +12,24 @@
 	        %>
 	        
 	        <ul class="nav navbar-nav navbar-right">
-	       		<li>
-	       			<a class="nav-link" href="riepilogocorsisti.jsp"><i class="bi bi-pencil-square"></i>&nbsp;Gestione corsisti</a>
-	       		</li>
-	       		<li>
-	                <a class="nav-link" href="#.jsp">
-	                    <i class="bi bi-person-circle"></i>&nbsp; <%= username %>
-	                </a>
-	            </li>
-	        	<li>
-	                <a class="nav-link" href="logout.jsp">
+   				<li>
+   				<div class="btn-group">
+					<button style="background-color: rgba(0, 0, 0, 0.2);" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="bi bi-person-circle"></i>&nbsp; <%= username %>
+					</button>
+				  <div class="dropdown-menu dropdown-menu-right">
+					 <a class="dropdown-item" href="logout.jsp">
 	                    <i class="bi bi-box-arrow-in-right"></i>&nbsp; Logout
 	                </a>
-	            </li>
+				  </div>
+				</div>
+                
+                </li>
+                <li>
+                
+            	</li>
+	            	
+	        	
 	        </ul>
 	        <%
 	        	} 
