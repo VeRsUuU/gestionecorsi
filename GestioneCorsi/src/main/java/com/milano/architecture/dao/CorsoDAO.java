@@ -91,4 +91,20 @@ public class CorsoDAO {
 		return corsi;
 	}
 
+	public Corso getinizioUltimo(Connection conn) throws DAOException {
+		String SELECT_ULTIMO_INIZIO="select nome_corso, data_inizio  from(select nome_corso, data_inizio from corso order by data_inizio desc )where ROWNUM = 1";
+		Corso corso = null;
+		try {
+			corso=new Corso();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SELECT_ULTIMO_INIZIO);
+			rs.next();
+			corso.setNome(rs.getString(1));
+			corso.setDataInizio(new Date(rs.getDate(2).getTime()));
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return corso;
+	}
+
 }

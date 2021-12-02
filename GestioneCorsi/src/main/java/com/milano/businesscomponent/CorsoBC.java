@@ -54,5 +54,22 @@ public class CorsoBC {
 			DBAccess.closeConnection();
 		}
 	}
+	
+	//metodod data inzio ultimo corso()
+	public Corso dataInizioUltimoCorso() throws ClassNotFoundException, IOException, DAOException {
+		
+		try {
+			CorsoDAO corsoDAO = new CorsoDAO();
+			Connection conn = DBAccess.getConnection();
+			return corsoDAO.getinizioUltimo(conn);
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
+		}
+		
+
+		
+	}
 
 }
