@@ -1,3 +1,4 @@
+<%@page import="com.milano.businesscomponent.model.Docente"%>
 <%@page import="com.milano.businesscomponent.AdminFacade"%>
 <%@page import="com.milano.businesscomponent.model.Corso"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,12 +34,13 @@ Integer tot=AdminFacade.getIstance().getotCorsisti();
 Corso corsodt=new Corso();
 corsodt=AdminFacade.getIstance().getDataUltimoCorso();
 Integer totCommenti=AdminFacade.getIstance().getTotCommenti();
-
+Docente doc = new Docente();
+doc = AdminFacade.getIstance().getMaxCorsi();
 %>
 <p>numero totali corsisti <%= tot %></p>
 <p>nome dell'ultimo corso : <%= corsodt.getNome() %>, data inizio dell'ultimo corso : <%= corsodt.getDataInizio() %> </p>
 <p>numero totali commenti presenti : <%= totCommenti %></p>
-
+<p>docente max corsi :<%=doc %>
 
 
 
