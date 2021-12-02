@@ -1,4 +1,4 @@
-<%
+	<%
 if (session.getAttribute("errori") == null) {
 	session.setAttribute("errori", 0);
 }
@@ -18,6 +18,10 @@ if (err == 5){
 	
 	}
 	
+}
+
+if(session.getAttribute("username")!=null){
+	response.sendRedirect("recapCorsisti.jsp");
 }
 if (err < 5) {
 	

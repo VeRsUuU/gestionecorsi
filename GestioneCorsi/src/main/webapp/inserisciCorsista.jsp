@@ -157,18 +157,23 @@
 				
 				<% } %>
 				>
-			<div class="row" style="margin-bottom: 40px">
+			<div class="row" style="margin-bottom: 40px; margin-top: 30px">
 			<div class="col-md-4">
 				<label  for="dataInizio<%=corso.getCod()%>">Data inizio</label> 
 				<input type="text"
-					placeholder="<%=formato.format(corso.getDataInizio())%>"
+					value="<%=formato.format(corso.getDataInizio())%>"
 					name="dataInizio<%=corso.getCod()%>" class="form-control-inline">
 			</div>
 			<div class="col-md-4">
 				<label for="dataFine<%=corso.getCod()%>">Data fine
 				</label> 
-				<input type="text" placeholder="<%=formato.format(corso.getDataFine())%>"
+				<input type="text" value="<%=formato.format(corso.getDataFine())%>"
 					name="dataFine<%=corso.getCod()%>" class="form-control-inline">
+			</div>
+			<div class="col-md-4">
+				<p>Costo: <%= corso.getCosto() %>&euro;</p><hr>
+				<p>Aula di svolgimento: <%= corso.getAula() %></p><hr>
+				<p>Commenti: <%= corso.getCommenti() %></p><hr>
 			</div>
 			</div> 
 			</div>
