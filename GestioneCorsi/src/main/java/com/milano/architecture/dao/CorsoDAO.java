@@ -68,16 +68,16 @@ public class CorsoDAO {
 		return corso;
 	}
 
-	public ArrayList<Corso> getCorsoPiuFrequentato(Connection conn) throws DAOException {
-		ArrayList<Corso> corsi = null;
+	public ArrayList<Integer> getCodCorsoPiuFrequentato(Connection conn) throws DAOException {
+		ArrayList<Integer> corsi = null;
 		try {
 			CorsoCorsistaDAO ccDao = new CorsoCorsistaDAO();
-			HashMap<Corso, Integer> prenotazioni = ccDao.getMap(conn);
+			HashMap<Integer, Integer> prenotazioni = ccDao.getMap(conn);
 
 			int max = Collections.max(prenotazioni.values());
 
-			corsi = new ArrayList<Corso>();
-			for (Entry<Corso, Integer> entry : prenotazioni.entrySet()) {
+			corsi = new ArrayList<Integer>();
+			for (Entry<Integer, Integer> entry : prenotazioni.entrySet()) {
 				if (entry.getValue() == max) {
 					corsi.add(entry.getKey());
 				}

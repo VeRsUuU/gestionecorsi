@@ -1,5 +1,6 @@
 package test.com.milano.architecture.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import com.milano.architecture.dao.CorsistaDAO;
 import com.milano.architecture.dao.CorsoCorsistaDAO;
 import com.milano.architecture.dao.CorsoDAO;
 import com.milano.architecture.dbaccess.DBAccess;
+import com.milano.businesscomponent.CorsoBC;
 import com.milano.businesscomponent.model.Corsista;
 import com.milano.businesscomponent.model.Corso;
 
@@ -76,7 +78,7 @@ class CorsoDAOTest {
 	@Test
 	@Order(1)
 	void testGetAll() {
-		
+
 		System.out.println("GetAll");
 
 		try {
@@ -95,7 +97,7 @@ class CorsoDAOTest {
 	void testGetById() {
 
 		System.out.println("\nGet by ID");
-		
+
 		try {
 			CorsoDAO daoCorso = new CorsoDAO();
 			Corso corso = daoCorso.getById(conn, 1);
@@ -131,10 +133,14 @@ class CorsoDAOTest {
 			ccDao.create(conn, 3, 6);
 			ccDao.create(conn, 3, 7);
 
-			CorsoDAO daoCorso = new CorsoDAO();
-			ArrayList<Corso> corsi2 = daoCorso.getCorsoPiuFrequentato(conn);
-			for (int i = 0; i < corsi2.size(); i++) {
-				System.out.println(corsi2.get(i).toString());
+			CorsoBC cbc = new CorsoBC();
+			try {
+				ArrayList<Corso> corsi = cbc.getCorsoPiuFrequentato();
+				for (int i = 0; i < corsi.size(); i++) {
+					System.out.println(corsi.get(i).toString());
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
 			}
 
 		} catch (SQLException e) {

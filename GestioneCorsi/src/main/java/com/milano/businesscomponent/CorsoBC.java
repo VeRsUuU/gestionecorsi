@@ -1,8 +1,10 @@
 package com.milano.businesscomponent;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.milano.architecture.dao.CorsoDAO;
 import com.milano.architecture.dao.DAOException;
@@ -36,9 +38,16 @@ public class CorsoBC {
 	}
 
 	public ArrayList<Corso> getCorsoPiuFrequentato() throws DAOException, ClassNotFoundException, IOException {
+
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			return corsoDAO.getCorsoPiuFrequentato(DBAccess.getConnection());
+			Connection conn = DBAccess.getConnection();
+			ArrayList<Integer> codCorsi = corsoDAO.getCodCorsoPiuFrequentato(conn);
+			ArrayList<Corso> corsi = new ArrayList<Corso>(codCorsi.size());
+			for (int i = 0; i < codCorsi.size(); i++) {
+				corsi.add(corsoDAO.getById(conn, codCorsi.get(i)));
+			}
+			return corsi;
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
