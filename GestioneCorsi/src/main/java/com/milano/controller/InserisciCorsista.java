@@ -71,7 +71,7 @@ public class InserisciCorsista extends HttpServlet {
 		}
 		
 		if(errori.isEmpty()) {
-			
+		
 			try {
 				Corsista corsista = new Corsista();
 				corsista.setCodCorsista(CorsistaIdGenerator.getInstance().getNextId());

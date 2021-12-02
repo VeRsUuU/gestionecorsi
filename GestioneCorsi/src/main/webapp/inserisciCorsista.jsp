@@ -109,7 +109,7 @@
 					<%
 					if (errori.containsKey("errorDataInterval_" + corso.getCod())) {
 					%>
-				
+				 
 				<p><%=errori.get("errorDataInterval_" + corso.getCod())%></p>
 					<%
 					}

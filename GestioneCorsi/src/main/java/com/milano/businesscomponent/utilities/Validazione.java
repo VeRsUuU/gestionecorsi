@@ -51,7 +51,7 @@ public class Validazione {
 
 					Calendar dataFine = Calendar.getInstance();
 					dataFine.setTime(date[1]);
-
+  
 					if (date[0].before(c.getDataInizio()) || date[1].after(c.getDataFine()))
 						errori.put("errorData_" + c.getCod(), "Il corso " + c.getNome() + " deve essere compreso tra : "
 								+ c.getDataInizio() + " e " + c.getDataFine());
