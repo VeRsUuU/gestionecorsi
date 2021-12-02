@@ -3,10 +3,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/main-style.css">
+<%@include file="CDN/bootstrap4CDN.html"%>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="pageformat/nav.jsp" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@include file="pageformat/footer.html"%>
 </body>
 </html>
