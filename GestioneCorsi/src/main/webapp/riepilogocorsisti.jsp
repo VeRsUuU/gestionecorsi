@@ -12,13 +12,16 @@
 <html>
 
 	<head>
-		<%@include file="CDN/bootstrap4CDN.html"%>
 		<link rel="stylesheet" href="css/main-style.css">
+		<%@include file="CDN/bootstrap4CDN.html"%>
+		
 		<meta charset="ISO-8859-1">
 	</head>
 <body>
 <jsp:include page="pageformat/nav.jsp"/>
 	<div class="container" style="align: center;">
+	<br>
+	<br>
 		<div class="page-header">
 			<h2 align="center">Dati amministratore</h2>
 		</div>
@@ -78,13 +81,6 @@
       <%
      	 	}
       %>
-      <td>
-      <form action="/<%=application.getServletContextName()%>/statistiche" method="post">
-			<button type="submit" class="btn btn-success">visualizza statistiche
-				<i class="bi bi-bar-chart-fill"></i>
-			</button>
-	  </form>
-	  </td>
 	  <td>
       <form action="/<%=application.getServletContextName()%>/elimina" method="post">
 			<button type="submit" class="btn btn-danger">elimina corsi
@@ -117,9 +113,15 @@
 				<i class="bi bi-chevron-double-right"></i>
 			</button>
 	</form>
+	<form action="/<%=application.getServletContextName()%>/statistiche" method="post">
+			<button type="submit" class="btn btn-success">visualizza statistiche
+				<i class="bi bi-bar-chart-fill"></i>
+			</button>
+	</form>
 	</div>
-	<br>
-	<br>
+</div>
+<br>
+<br>
 <%@include file="pageformat/footer.html"%>
 </body>
 </html>
