@@ -18,14 +18,14 @@ public class Validazione {
 			HashMap<Integer, Date[]> mappa) throws DAOException {
 		HashMap<String, String> errori = new HashMap<String, String>();
 		try {
-			Pattern pattern = Pattern.compile("[a-zA-Z]{3,30}");
+			Pattern pattern = Pattern.compile("[a-zA-Z .']{3,30}}");
 			Matcher matcher = pattern.matcher(nomeCorsista);
 
 			if (matcher.matches() == false) {
 				errori.put("errorNome", "Il campo nome non è valido");
 			}
 
-			Pattern pattern2 = Pattern.compile("[a-zA-Z]{3,30}");
+			Pattern pattern2 = Pattern.compile("[a-zA-Z .']{3,30}");
 			Matcher matcher2 = pattern2.matcher(cognomeCorsista);
 
 			if (matcher2.matches() == false) {

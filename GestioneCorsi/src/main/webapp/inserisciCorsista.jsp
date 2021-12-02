@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.milano.businesscomponent.model.Admin"%>
 <%@page import="java.util.Map"%>
@@ -20,6 +21,7 @@
 	<%
 	HashMap<Integer, Integer> map = AdminFacade.getIstance().getIscritti();
 	ArrayList<Corso> corsi = AdminFacade.getIstance().getAllCorso();
+	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 	HashMap<String, String> errori = new HashMap<String, String>();
 
@@ -27,46 +29,65 @@
 		errori = (HashMap<String, String>) request.getAttribute("erroriServlet");
 	}
 	%>
-	<form
-		action="/<%=application.getServletContextName()%>/inserisciCorsista"
+	<div class="container" style="align: center;">
+	<div class="pb-2 mt-4 mb-2 border-bottom">
+    <h1>Inserisci corsista</h1>      
+  </div>
+	<form action="/<%=application.getServletContextName()%>/inserisciCorsista"
 		method="post">
-		<label for="nome">Nome <input type="text" name="nome">
+		<div class="row" style="margin-top: 10px">
+		<div class="form-group col-md-6">
+			<label for="nome">Nome 
+			<input class="form-control" type="text" name="nome">
 		</label>
+		</div>
+		<div class="col-md-4" style="padding-top: 30px; color: red; margin-left: 30px">
 		<%
 		if (errori.containsKey("errorNome")) {
 		%>
 		<p><%=errori.get("errorNome")%></p>
 		<%}%>
+		</div>
+		</div>
 
 
-		<br> <label for="nome">Cognome <input type="text"
-			name="cognome">
+		<div class="row">
+		<div class="form-group col-md-6" >
+			<label for="nome">Cognome 
+			<input class="form-control" type="text" name="cognome">
 		</label>
+		</div>
+		<div class="col-md-4" style="padding-top: 30px;color: red; margin-left: 30px">
 		<%
 		if (errori.containsKey("errorCognome")) {
 		%>
-		<p><%=errori.get("errorCognome")%>
+		<%=errori.get("errorCognome")%>
 			<%}%>
-			<br>
-
+		</div>
+		</div>
+		
+		
+		
 			<%
 			for (Corso corso : corsi) {
 				System.out.println(corso);
 				Integer i = new Integer((int) corso.getCod());
 			%>
 		
-		<div>
+		<div class="row">
+		<div class="form-check col-md-3" style="margin-left: 30px"> 
 
 			<input type="checkbox"
 				onclick="ShowHideDiv('divToHide<%=corso.getCod()%>')"
-				name="numeroCorso" value="<%=corso.getCod()%>"
+				name="numeroCorso" class="form-check-input" value="<%=corso.getCod()%>"
 				<%if (map.containsKey(i)) {
 					if (map.get(i) == 12) {
 						out.print("disabled");
 					}
-				}%>>
+				}%>>	
 			<label for="<%=corso.getCod()%>"><%=corso.getNome()%></label>
-
+		</div>
+		<div class="col-md-3">
 			<%
 			if (map.containsKey(i)) {
 				out.print("Disponibili " + (12 - map.get(i)) + "/12");
@@ -74,35 +95,25 @@
 				out.print("Disponibili 12/12");
 			}
 			%>
-
-
-			<div id="divToHide<%=corso.getCod()%>" style="display: none">
-				<label>Data inizio</label> 
-				<input type="text"
-					placeholder="<%=corso.getDataInizio()%>"
-					name="dataInizio<%=corso.getCod()%>"> <label>Data
-					fine
-				</label> 
-				<input type="text" placeholder="<%=corso.getDataFine()%>"
-					name="dataFine<%=corso.getCod()%>">
 			</div>
-			<div>
+			
+			<div class="col-md-5" style="color: red">
 				<%
 					if (errori.containsKey("errorData_" + corso.getCod())) {
 				%>
-				<p><%=errori.get("errorData_" + corso.getCod())%></p>
+				<%=errori.get("errorData_" + corso.getCod())%>
 				<%}%>
 				<%
 					if (errori.containsKey("errorDataInvertita_" + corso.getCod())) {
 				%>
 
-				<p><%=errori.get("errorDataInvertita_" + corso.getCod())%></p>
+				<%=errori.get("errorDataInvertita_" + corso.getCod())%>
 				<%}%>
 				<%
 				if (errori.containsKey("errorDataInterval_" + corso.getCod())) {
 				%>
 
-				<p><%=errori.get("errorDataInterval_" + corso.getCod())%></p>
+				<%=errori.get("errorDataInterval_" + corso.getCod())%>
 				<%
 				}
 				%>
@@ -110,17 +121,42 @@
 				if (errori.containsKey("errorDataMancante_" + corso.getCod())) {
 				%>
 
-				<p><%=errori.get("errorDataMancante_" + corso.getCod())%></p>
+				<%=errori.get("errorDataMancante_" + corso.getCod())%>
 				<%
 				}
 				%>
+				</div>
+				</div>
+			
+			
+			<div id="divToHide<%=corso.getCod()%>" class="col-md-10" style="display: none;">
+			<div class="row" style="margin-bottom: 40px">
+			<div class="col-md-4">
+				<label  for="dataInizio<%=corso.getCod()%>">Data inizio</label> 
+				<input type="text"
+					placeholder="<%=formato.format(corso.getDataInizio())%>"
+					name="dataInizio<%=corso.getCod()%>" class="form-control-inline">
 			</div>
-		</div>
+			<div class="col-md-4">
+				<label for="dataFine<%=corso.getCod()%>">Data fine
+				</label> 
+				<input type="text" placeholder="<%=formato.format(corso.getDataFine())%>"
+					name="dataFine<%=corso.getCod()%>" class="form-control-inline">
+			</div>
+			</div>
+			</div>
+			
+
 		<%}%>
-		<label for="precedenti">Precedenti Formativi <input
-			type="radio" name="precedenti" value="1" checked="checked">Si
-			<input type="radio" name="precedenti" value="0">No
-		</label> <br> <input type="submit" value="invia">
+		<div class="row" style="margin: 10px 0 0 20px">
+		<div class="form-check form-check-inline">
+			<label for="precedenti">Precedenti Formativi 
+				<input class="form-check-input" type="radio"  name="precedenti" value="1" checked="checked">Si
+				<input class="form-check-input" type="radio"  name="precedenti" value="0">No
+			</label> 
+		</div>
+		</div> 
+		<button type="submit" class="btn btn-success" style="margin: 30px">Invia</button>
 	</form>
 	<script type="text/javascript">
 		function ShowHideDiv(corso) {
@@ -131,20 +167,7 @@
 				el.style.display = "none";
 		}
 	</script>
-	<div>
-		<%
-		if (request.getAttribute("numeroCorso") != null) {
-		%>
-		<p><%=request.getAttribute("nome")%></p>
-		<p><%=request.getAttribute("cognome")%></p>
-
-		<%
-		List<String> lista = (List<String>) request.getAttribute("numeroCorso");
-		for (String s : lista) {
-		%>
-		<p><%=s%></p>
-		<%}%>
-		<%}%>
 	</div>
+	<%@include file="pageformat/footer.html"%>
 </body>
 </html>
