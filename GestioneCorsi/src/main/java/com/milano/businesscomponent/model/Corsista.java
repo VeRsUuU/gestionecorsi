@@ -2,39 +2,38 @@ package com.milano.businesscomponent.model;
 
 public class Corsista {
 	
-	private String nome_corsista;
-	private String cognome_corsista;
-	private long cod_corsista;
-	private byte precedenti_formativi;
+	private String nomeCorsista;
+	private String cognomeCorsista;
+	private long codCorsista;
+	private byte precedentiFormativi;
 	
-	public String getNome_corsista() {
-		return nome_corsista;
+	public String getNomeCorsista() {
+		return nomeCorsista;
 	}
-	public void setNome_corsista(String nome_corsista) {
-		this.nome_corsista = nome_corsista;
+	public void setNomeCorsista(String nomeCorsista) {
+		this.nomeCorsista = nomeCorsista;
 	}
-	public String getCognome_corsista() {
-		return cognome_corsista;
+	public String getCognomeCorsista() {
+		return cognomeCorsista;
 	}
-	public void setCognome_corsista(String cognome_corsista) {
-		this.cognome_corsista = cognome_corsista;
+	public void setCognomeCorsista(String cognomeCorsista) {
+		this.cognomeCorsista = cognomeCorsista;
 	}
-	public long getCod_corsista() {
-		return cod_corsista;
+	public long getCodCorsista() {
+		return codCorsista;
 	}
-	public void setCod_corsista(long cod_corsista) {
-		this.cod_corsista = cod_corsista;
+	public void setCodCorsista(long codCorsista) {
+		this.codCorsista = codCorsista;
 	}
-	public byte getPrecedenti_formativi() {
-		return precedenti_formativi;
+	public byte getPrecedentiFormativi() {
+		return precedentiFormativi;
 	}
-	public void setPrecedenti_formativi(byte precedenti_formativi) {
-		this.precedenti_formativi = precedenti_formativi;
+	public void setPrecedentiFormativi(byte precedentiFormativi) {
+		this.precedentiFormativi = precedentiFormativi;
 	}
-	
 	@Override
 	public String toString() {
-		return "Corsista [nome_corsista=" + nome_corsista + ", cognome_corsista=" + cognome_corsista + ", cod_corsista="
-				+ cod_corsista + ", precedenti_formativi=" + precedenti_formativi + "]";
+		return "Corsista [nomeCorsista=" + nomeCorsista + ", cognomeCorsista=" + cognomeCorsista + ", codCorsista="
+				+ codCorsista + ", precedentiFormativi=" + precedentiFormativi + "]";
 	}
 }

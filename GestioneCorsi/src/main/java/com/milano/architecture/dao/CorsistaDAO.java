@@ -34,10 +34,10 @@ public class CorsistaDAO {
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
 			
-			rowSet.updateLong(3, model.getCod_corsista());
-			rowSet.updateString(1, model.getNome_corsista());
-			rowSet.updateString(2, model.getCognome_corsista());
-			rowSet.updateByte(4, model.getPrecedenti_formativi());
+			rowSet.updateLong(3, model.getCodCorsista());
+			rowSet.updateString(1, model.getNomeCorsista());
+			rowSet.updateString(2, model.getCognomeCorsista());
+			rowSet.updateByte(4, model.getPrecedentiFormativi());
 			rowSet.insertRow();
 			
 			rowSet.moveToCurrentRow();
@@ -54,7 +54,7 @@ public class CorsistaDAO {
 		
 		try {
 			ps = conn.prepareStatement("delete from corsista where cod_corsista = ?");
-			ps.setLong(1, model.getCod_corsista());
+			ps.setLong(1, model.getCodCorsista());
 			ps.execute();
 			conn.commit();
 		} catch(SQLException exc) {
@@ -76,10 +76,10 @@ public class CorsistaDAO {
 			
 			for(int i = 0; rs.next(); i++) {
 				Corsista c= new Corsista();
-				c.setCod_corsista(rs.getLong(3));
-				c.setNome_corsista(rs.getString(1));
-				c.setCognome_corsista(rs.getString(2));
-				c.setPrecedenti_formativi(rs.getByte(4));
+				c.setCodCorsista(rs.getLong(3));
+				c.setNomeCorsista(rs.getString(1));
+				c.setCognomeCorsista(rs.getString(2));
+				c.setPrecedentiFormativi(rs.getByte(4));
 				corsisti[i] = c;
 			}
 			
@@ -100,15 +100,15 @@ public class CorsistaDAO {
 		
 		try {
 			ps = conn.prepareStatement("select * from corsista where cod_corsista = ?");
-			ps.setLong(1, model.getCod_corsista());
+			ps.setLong(1, model.getCodCorsista());
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
 				corsista = new Corsista();
-				corsista.setCod_corsista(rs.getLong(3));
-				corsista.setNome_corsista(rs.getString(1));
-				corsista.setCognome_corsista(rs.getString(2));
-				corsista.setPrecedenti_formativi(rs.getByte(4));
+				corsista.setCodCorsista(rs.getLong(3));
+				corsista.setNomeCorsista(rs.getString(1));
+				corsista.setCognomeCorsista(rs.getString(2));
+				corsista.setPrecedentiFormativi(rs.getByte(4));
 			}
 		} catch(SQLException exc) {
 			throw new DAOException(exc);

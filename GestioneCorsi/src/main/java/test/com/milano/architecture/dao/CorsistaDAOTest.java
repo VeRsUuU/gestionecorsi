@@ -30,10 +30,10 @@ class CorsistaDAOTest {
 		
 		conn = DBAccess.getConnection();
 		corsista = new Corsista();
-		corsista.setCod_corsista(39);
-		corsista.setNome_corsista("Luca");
-		corsista.setCognome_corsista("Lo Piccolo");
-		corsista.setPrecedenti_formativi((byte)1);
+		corsista.setCodCorsista(39);
+		corsista.setNomeCorsista("Luca");
+		corsista.setCognomeCorsista("Lo Piccolo");
+		corsista.setPrecedentiFormativi((byte)1);
 		
 	}
 
