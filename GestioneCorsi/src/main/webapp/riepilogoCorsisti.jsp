@@ -13,9 +13,8 @@ if (admin != null) {
 <html>
 
 <head>
-<link rel="stylesheet" href="css/main-style.css">
 <%@include file="CDN/bootstrap4CDN.html"%>
-
+<link rel="stylesheet" href="css/main-style.css">
 <meta charset="ISO-8859-1">
 </head>
 <body>
@@ -48,11 +47,12 @@ if (admin != null) {
 			</tbody>
 		</table>
 		<br> <br>
-
+	</div>
+	
 		<!-- CORSISTI -->
+	<div class="container">
 		<h3 align="center">Riepilogo corsisti</h3>
-		<table class="table table-striped table-bordered table-sm"
-			id="mytable">
+		<table class="datatable table table-striped table-bordered">
 			<thead>
 				<tr align="center">
 					<th class="th-sm">Numero matricola</th>
@@ -81,22 +81,15 @@ if (admin != null) {
 					<%
 					}
 					%>
-
-					<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
-						class="btn btn-danger">elimina corsi <i class="bi bi-trash"></i></a></td>
+						<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
+							class="btn btn-danger">elimina corsi <i class="bi bi-trash"></i></a></td>
 					<%
 					}
 					%>
 				</tr>
 			</tbody>
 		</table>
-
-		<script>
-			$(document).ready(function() {
-				$('#mytable').DataTable();
-				$('.dataTables_length').addClass('bs-select');
-			});
-		</script>
+	</div>
 
 		<!-- PULSANTI -->
 		<table class="table table-striped">
@@ -116,7 +109,6 @@ if (admin != null) {
 				</tr>
 			</tbody>
 		</table>
-	</div>
 	<br>
 	<br>
 	<%@include file="pageformat/footer.html"%>
