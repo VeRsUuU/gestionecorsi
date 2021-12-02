@@ -67,6 +67,11 @@ public class AdminFacade {
 		return corsoBC.getCorsoPiuFrequentato();
 
 	}
+	
+	public Corso getDataUltimoCorso() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC();
+		return corsoBC.dataInizioUltimoCorso();
+	}
 
 	// metodi corsista
 
