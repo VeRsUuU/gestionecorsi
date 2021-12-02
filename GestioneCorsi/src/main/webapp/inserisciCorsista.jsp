@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.milano.businesscomponent.model.Admin"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
@@ -27,7 +28,7 @@
 		errori = (HashMap<String, String>) request.getAttribute("erroriServlet");
 	}
 	%>
-	<form action="/inserisciCorsista" method="get">
+	<form action="/<%=application.getServletContextName()%>/inserisciCorsista" method="post">
 		<label for="nome">Nome <input type="text" name="nome">
 		</label>
 		<%
@@ -59,9 +60,9 @@
 		
 		<div>
 
-			<input type="checkbox"
+			<input type="checkbox" 
 				onclick="ShowHideDiv('divToHide<%=corso.getCod()%>')"
-				name="numeroCorso"
+				name="numeroCorso" value="<%=corso.getCod()%>"
 				<%if (map.containsKey(i)) {
 	if (map.get(i) == 12) {
 		out.print("disabled");
@@ -79,13 +80,21 @@
 
 
 			<div id="divToHide<%=corso.getCod()%>" style="display: none">
-				<label>Data inizio</label> <input type="text"
-					placeholder="DD/MM/YYYY"> <label>Data fine</label> <input
-					type="text" placeholder="DD/MM/YYYY">
+				<label>Data inizio</label> 
+				<input type="text"
+					placeholder="<%= corso.getDataInizio() %>" name="dataInizio<%=corso.getCod()%>"> 
+				
+				<label>Data fine</label> 
+				<input
+					type="text" placeholder="<%= corso.getDataFine() %>" name="dataFine<%=corso.getCod()%>">
+				
+				
+			</div>
+			<div>
 				<%
 				if (errori.containsKey("errorData_" + corso.getCod())) {
 				%>
-				<p><%=errori.get("errorCognome")%>
+				<p><%=errori.get("errorData_"+ corso.getCod())%></p>
 					<%
 					}
 					%>
@@ -93,7 +102,7 @@
 					if (errori.containsKey("errorDataInvertita_" + corso.getCod())) {
 					%>
 				
-				<p><%=errori.get("errorDataInvertita_" + corso.getCod())%>
+				<p><%=errori.get("errorDataInvertita_" + corso.getCod())%></p>
 					<%
 					}
 					%>
@@ -101,7 +110,7 @@
 					if (errori.containsKey("errorDataInterval_" + corso.getCod())) {
 					%>
 				
-				<p><%=errori.get("errorDataInterval_" + corso.getCod())%>
+				<p><%=errori.get("errorDataInterval_" + corso.getCod())%></p>
 					<%
 					}
 					%>
@@ -109,16 +118,10 @@
 					if (errori.containsKey("errorDataMancante_" + corso.getCod())) {
 					%>
 				
-				<p><%=errori.get("errorDataMancante_" + corso.getCod())%>
+				<p><%=errori.get("errorDataMancante_" + corso.getCod())%></p>
 					<%
 					}
 					%>
-				
-			</div>
-			<div>
-				<%
-
-				%>
 
 
 			</div>
@@ -145,6 +148,9 @@
 		</label> <br> <input type="submit" value="invia">
 
 	</form>
+	
+	
+	
 
 
 
@@ -157,6 +163,21 @@
     		el.style.display = "none";
     }
 </script>
+
+
+
+<div>
+			<% if(request.getAttribute("numeroCorso")!= null){ %>
+				<p><%= request.getAttribute("nome") %></p>
+				<p><%= request.getAttribute("cognome") %></p>
+				
+				<% 
+				List<String> lista = (List<String>) request.getAttribute("numeroCorso");
+				for(String s : lista) {%>
+					<p><%= s %></p>
+				<% } %>
+			<% } %>
+		</div>
 </body>
 </html>
 

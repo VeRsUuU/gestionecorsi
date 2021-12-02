@@ -40,15 +40,17 @@ public class Validazione {
 				Corso c = cBC.getById((long) key);
 
 
-				Calendar dataInizioPiu2 = Calendar.getInstance();
-				dataInizioPiu2.setTime(date[0]);
-				dataInizioPiu2.add(Calendar.DAY_OF_YEAR, 1);
-
-				Calendar dataFine = Calendar.getInstance();
-				dataFine.setTime(date[1]);
+				
 
 
 				if (date[0] != null && date[1] != null) {
+					
+					Calendar dataInizioPiu2 = Calendar.getInstance();
+					dataInizioPiu2.setTime(date[0]);
+					dataInizioPiu2.add(Calendar.DAY_OF_YEAR, 1);
+
+					Calendar dataFine = Calendar.getInstance();
+					dataFine.setTime(date[1]);
 
 					if (date[0].before(c.getDataInizio()) || date[1].after(c.getDataFine()))
 						errori.put("errorData_" + c.getCod(), "Il corso " + c.getNome() + " deve essere compreso tra : "
