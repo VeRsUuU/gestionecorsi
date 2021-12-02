@@ -1,10 +1,26 @@
-
 <%
 if (session.getAttribute("errori") == null) {
 	session.setAttribute("errori", 0);
 }
-int err = (int) session.getAttribute("errori");
+
+int err;
+err = (int) session.getAttribute("errori");
+
+if (err == 5){
+	
+	if(request.getParameter("param") != null){
+		
+		err = Integer.parseInt(request.getParameter("param"));
+		session.setAttribute("errori", err);
+	} else {
+		
+		response.sendRedirect("tentativiEsauriti.jsp");
+	
+	}
+	
+}
 if (err < 5) {
+	
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -68,9 +84,5 @@ if (err < 5) {
 </body>
 </html>
 <%
-} else {
-
-response.sendRedirect("tentativiesauriti.jsp");
-
 }
 %>
