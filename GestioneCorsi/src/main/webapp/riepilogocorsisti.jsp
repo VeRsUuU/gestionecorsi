@@ -63,11 +63,11 @@
  		for(Corsista c : corsista) {			
  	%>
     <tr align="center">
-      <td><%=c.getCod_corsista()%></td>
-      <td><%=c.getNome_corsista()%></td>
-      <td><%=c.getCognome_corsista()%></td>
+      <td><%=c.getCodCorsista()%></td>
+      <td><%=c.getNomeCorsista()%></td>
+      <td><%=c.getCognomeCorsista()%></td>
       <%
-     	 	if(c.getPrecedenti_formativi() == 1){
+     	 	if(c.getPrecedentiFormativi() == 1){
       %>
      	 <td>SI</td>
       <%
