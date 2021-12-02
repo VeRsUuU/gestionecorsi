@@ -12,12 +12,16 @@
 <html>
 
 	<head>
+		<link rel="stylesheet" href="css/main-style.css">
 		<%@include file="CDN/bootstrap4CDN.html"%>
+		
 		<meta charset="ISO-8859-1">
 	</head>
 <body>
-	<jsp:include page="pageformat/nav.jsp"/>
+<jsp:include page="pageformat/nav.jsp"/>
 	<div class="container" style="align: center;">
+	<br>
+	<br>
 		<div class="page-header">
 			<h2 align="center">Dati amministratore</h2>
 		</div>
@@ -48,7 +52,7 @@
 
 <!-- CORSISTI -->
 <h3 align="center">Riepilogo corsisti</h3>
-<table id="dtBasicExample" class="table table-striped table-bordered table-sm">
+<table class="table table-striped table-bordered table-sm" id="mytable">
   <thead>
     <tr align="center">
       <th class="th-sm">Numero matricola</th>
@@ -77,48 +81,47 @@
       <%
      	 	}
       %>
+	  <td>
+      <form action="/<%=application.getServletContextName()%>/elimina" method="post">
+			<button type="submit" class="btn btn-danger">elimina corsi
+				<i class="bi bi-trash"></i>
+			</button>
+	  </form>
+	  </td>
+	  <%
+ 		    }
+	  %>
     </tr>
-    <%
- 		}
-    %>
   </tbody>
 </table>
+
+<script> 
+	$(document).ready(function () {
+  $('#mytable').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+  });
+</script>
 	
    <!-- PULSANTI -->
-	<div class="table-responsive">
-		<table class="table table-hover">
-			<thead>
-			<tr align="center">
-				<th>
-					<form action="/<%=application.getServletContextName()%>/inserisci" method="post">
-						<input type="hidden" name="codice" value="">
-						<input type="hidden" name="nome" value="">
-						<input type="hidden" name="cognome" value="">
-						<input type="hidden" name="precedentiformativi" value="">
-						<button type="submit" class="btn btn-primary">inserisci corsista
-							<i class="bi bi-chevron-double-right"></i>
-						</button>
-					</form>
-				</th>
-				<th>
-					<form action="/<%=application.getServletContextName()%>/statistiche" method="post">
-					<button type="submit" class="btn btn-success">visualizza statistiche
-						<i class="bi bi-bar-chart-fill"></i>
-					</button>
-					</form>
-				</th>
-				<th>
-					<form action="/<%=application.getServletContextName()%>/inserisci" method="post">
-					<button type="submit" class="btn btn-danger">elimina corsi
-						<i class="bi bi-trash"></i>
-					</button>
-					</form>
-				</th>
-			</tr>
-			</thead>
-		</table>
+	<div class="container" align="center">
+	<form action="/<%=application.getServletContextName()%>/inserisci" method="post" >
+			<input type="hidden" name="codice" value="">
+			<input type="hidden" name="nome" value="">
+			<input type="hidden" name="cognome" value="">
+			<input type="hidden" name="precedentiformativi" value="">
+			<button type="submit" class="btn btn-primary">inserisci corsista
+				<i class="bi bi-chevron-double-right"></i>
+			</button>
+	</form>
+	<form action="/<%=application.getServletContextName()%>/statistiche" method="post">
+			<button type="submit" class="btn btn-success">visualizza statistiche
+				<i class="bi bi-bar-chart-fill"></i>
+			</button>
+	</form>
 	</div>
 </div>
+<br>
+<br>
 <%@include file="pageformat/footer.html"%>
 </body>
 </html>

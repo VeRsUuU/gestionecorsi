@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-
 import com.milano.architecture.dao.DAOException;
-
 
 import com.milano.businesscomponent.AdminFacade;
 import com.milano.businesscomponent.model.Admin;
@@ -21,18 +19,17 @@ import com.milano.businesscomponent.utilities.Validazione;
 public class AdminFacade {
 	private static AdminFacade istanza;
 
-	//singleton pattern
+	// singleton pattern
 	public static AdminFacade getIstance() {
 		if (istanza == null) {
 			istanza = new AdminFacade();
 		}
 		return istanza;
 	}
-	
-	
-	//metodi facade
-	
-	//metodo admin
+
+	// metodi facade
+
+	// metodo admin
 	public Admin getByIdAdmin(Admin admin)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		AdminBC adminBC = new AdminBC();
@@ -40,7 +37,7 @@ public class AdminFacade {
 		return adminBC.getById(admin);
 
 	}
-	
+
 	public Admin getByIdUsername(String username)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		AdminBC adminBC = new AdminBC();
@@ -49,35 +46,37 @@ public class AdminFacade {
 
 	}
 
-	//metodi corsi
-	public Corso getByIdCorsi(long id)
-			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+	// metodi corsi
+	public Corso getByIdCorsi(long id) throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsoBC corsoBC = new CorsoBC();
 
 		return corsoBC.getById(id);
 
 	}
-	
 
-	public ArrayList<Corso> getAllCorso() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+	public ArrayList<Corso> getAllCorso()
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.getAll();
 
 	}
-	public ArrayList<Corso> getCorsoPiuFrequentato() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+
+	public ArrayList<Corso> getCorsoPiuFrequentato()
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.getCorsoPiuFrequentato();
 
 	}
-	
-	//metodi corsista
-	
+
+	// metodi corsista
+
 	public void createCorsista(Corsista corsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsistaBC corsistaBC = new CorsistaBC();
 		corsistaBC.create(corsista);
 
 	}
+
 	public Corsista getByIdCorsista(Corsista corsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsistaBC corsistaBC = new CorsistaBC();
@@ -85,69 +84,77 @@ public class AdminFacade {
 		return corsistaBC.getById(corsista);
 
 	}
-	
+
 	public void deleteCorsista(Corsista corsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsistaBC corsistaBC = new CorsistaBC();
-		
+
 		corsistaBC.delete(corsista);
 
 	}
-	
+
 	public Corsista[] getAllCorsista() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsistaBC corsistaBC = new CorsistaBC();
 		return corsistaBC.getAll();
 
 	}
-	
-	//metodi Corso_Corsista
-	
-	public HashMap<Integer,Integer> getIscritti() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-	CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
+
+	public Corso[] getCorsiCorsistaById(long id) throws DAOException, ClassNotFoundException, IOException {
+		CorsistaBC cbc = new CorsistaBC();
+		return cbc.getCorsi(id);
+	}
+
+	// metodi Corso_Corsista
+
+	public HashMap<Integer, Integer> getIscritti()
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		return ccBC.getMap();
 	}
-	
-	public HashMap<String,String> getErrori(String nome, String cognome, HashMap<Integer, Date[]> map) throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-			return Validazione.valida(nome,cognome,map); 
-		}
-	
+
+	public HashMap<String, String> getErrori(String nome, String cognome, HashMap<Integer, Date[]> map)
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		return Validazione.valida(nome, cognome, map);
+	}
+
 	public void createCorsoCorsista(long idcorso, long idcorsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
-		ccBC.create(idcorso, idcorsista);;
+		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
+		ccBC.create(idcorso, idcorsista);
+		;
 
 	}
+
 	public void deleteCorsoCorsista(long idcorso, long idcorsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
-		ccBC.delete(idcorso, idcorsista);;
+		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
+		ccBC.delete(idcorso, idcorsista);
+		;
 
 	}
-	
-	public ArrayList<CorsoCorsista> getAllCorsoCorsista() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
+
+	public ArrayList<CorsoCorsista> getAllCorsoCorsista()
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		return ccBC.getAll();
 
 	}
-	
-	//metodi docente
-	
+
+	// metodi docente
+
 	public Docente getByIdDocente(long codDocente)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		DocenteBC dBC=new DocenteBC();
+		DocenteBC dBC = new DocenteBC();
 
-		return  dBC.getById(codDocente);
-
-	}
-	public Docente getMaxCorsi()
-			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-		DocenteBC dBC=new DocenteBC();
-
-		return  dBC.getDocenteMaxCorsi();
+		return dBC.getById(codDocente);
 
 	}
-	
-	
 
-	
+	public Docente getMaxCorsi() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		DocenteBC dBC = new DocenteBC();
+
+		return dBC.getDocenteMaxCorsi();
+
+	}
+
 }
