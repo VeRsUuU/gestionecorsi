@@ -81,13 +81,9 @@
       <%
      	 	}
       %>
-	  <td>
-      <form action="/<%=application.getServletContextName()%>/elimina" method="post">
-			<button type="submit" class="btn btn-danger">elimina corsi
-				<i class="bi bi-trash"></i>
-			</button>
-	  </form>
-	  </td>
+	  
+	  <td><a href="elimina.jsp" class="btn btn-danger">elimina corsi <i
+							class="bi bi-trash"></i></a></td>
 	  <%
  		    }
 	  %>
@@ -103,22 +99,30 @@
 </script>
 	
    <!-- PULSANTI -->
-	<div class="container" align="center">
-	<form action="/<%=application.getServletContextName()%>/inserisci" method="post" >
-			<input type="hidden" name="codice" value="">
-			<input type="hidden" name="nome" value="">
-			<input type="hidden" name="cognome" value="">
-			<input type="hidden" name="precedentiformativi" value="">
-			<button type="submit" class="btn btn-primary">inserisci corsista
-				<i class="bi bi-chevron-double-right"></i>
-			</button>
-	</form>
-	<form action="/<%=application.getServletContextName()%>/statistiche" method="post">
-			<button type="submit" class="btn btn-success">visualizza statistiche
-				<i class="bi bi-bar-chart-fill"></i>
-			</button>
-	</form>
-	</div>
+	<table class="table table-striped">
+ 		<tbody align="center">
+   			 <tr>
+   			 <td>
+     		 <form action="/<%=application.getServletContextName()%>/inserisci" method="post" >
+				<input type="hidden" name="codice" value="">
+				<input type="hidden" name="nome" value="">
+				<input type="hidden" name="cognome" value="">
+				<input type="hidden" name="precedentiformativi" value="">
+				<button type="submit" class="btn btn-primary">inserisci corsista
+					<i class="bi bi-chevron-double-right"></i>
+				</button>
+			</form>
+			</td>
+			<td>
+			<form action="/<%=application.getServletContextName()%>/statistiche" method="post">
+				<button type="submit" class="btn btn-success">visualizza statistiche
+					<i class="bi bi-bar-chart-fill"></i>
+				</button>
+			</form>
+			</td>
+   			</tr>
+  		</tbody>
+</table>
 </div>
 <br>
 <br>
