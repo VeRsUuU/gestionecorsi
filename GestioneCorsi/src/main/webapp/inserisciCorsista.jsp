@@ -18,120 +18,145 @@
 
 
 	<%
-	HashMap<Integer, Integer> map =  AdminFacade.getIstance().getIscritti();
-	ArrayList<Corso> corsi =  AdminFacade.getIstance().getAllCorso();
-	
-	HashMap<String,String> errori = new HashMap<String,String>();
-	
-	if(null != request.getAttribute("erroriServlet")){
-		errori = (HashMap<String,String>) request.getAttribute("erroriServlet");
+	HashMap<Integer, Integer> map = AdminFacade.getIstance().getIscritti();
+	ArrayList<Corso> corsi = AdminFacade.getIstance().getAllCorso();
+
+	HashMap<String, String> errori = new HashMap<String, String>();
+
+	if (null != request.getAttribute("erroriServlet")) {
+		errori = (HashMap<String, String>) request.getAttribute("erroriServlet");
 	}
-
-
-%>
+	%>
 	<form action="/inserisciCorsista" method="get">
 		<label for="nome">Nome <input type="text" name="nome">
-		</label> 
-		<% if(errori.containsKey("errorNome")){%>
-		<p><%= errori.get("errorNome") %></p>
-		<%} %>
-		
-		
+		</label>
+		<%
+		if (errori.containsKey("errorNome")) {
+		%>
+		<p><%=errori.get("errorNome")%></p>
+		<%
+		}
+		%>
+
+
 		<br> <label for="nome">Cognome <input type="text"
 			name="cognome">
 		</label>
-		<% if(errori.containsKey("errorCognome")){%>
-		<p><%= errori.get("errorCognome") %>
-		<% } %>
-		 <br>
-
 		<%
-		for(Corso corso : corsi){
-			System.out.println(corso);
-			Integer i = new Integer((int) corso.getCod());
-	%>
-	
-	
-	
-	
-	
-		<div>
-		<script type="text/javascript">
-    function ShowHideDiv(corso<%= corso.getCod()%>) {
-        var divToHide<%=corso.getCod()%> = document.getElementById("divToHide<%=corso.getCod()%>");
-        divToHide<%=corso.getCod()%>.style.display = corso<%= corso.getCod()%>.checked ? "block" : "none";
-    }
-</script>
-			<input type="checkbox" onclick="ShowHideDiv(this)"  id="corso<%= corso.getCod()%>" name="numeroCorso"
-			
-			<% if(map.containsKey(i)){
-					if(map.get(i) == 12){
-						out.print("disabled");
-					}
-				}
+		if (errori.containsKey("errorCognome")) {
+		%>
+		<p><%=errori.get("errorCognome")%>
+			<%
+			}
 			%>
-			> 
-			<label for="<%=corso.getCod()%>"><%= corso.getNome() %></label>
-				
-				<% if(map.containsKey(i)){
-					out.print("Disponibili "+(12-map.get(i))+"/12");
-				}
-					else {
-						out.print("Disponibili 12/12"); 
-						}%>
-				
-				
-				<div id="divToHide<%=corso.getCod()%>" style="display: none">
-					<label>Data inizio</label>
-					<input type="text" placeholder="DD/MM/YYYY">
-					<label>Data fine</label>
-					<input type="text" placeholder="DD/MM/YYYY">
-					<% if(errori.containsKey("errorData_"+corso.getCod())){%>
-					<p><%= errori.get("errorCognome") %>
-					<% } %>
-					<% if(errori.containsKey("errorDataInvertita_"+corso.getCod())){%>
-					<p><%= errori.get("errorDataInvertita_"+corso.getCod()) %>
-					<% } %>
-					<% if(errori.containsKey("errorDataInterval_"+corso.getCod())){%>
-					<p><%= errori.get("errorDataInterval_"+corso.getCod()) %>
-					<% } %>
-					<% if(errori.containsKey("errorDataMancante_"+corso.getCod())){%>
-					<p><%= errori.get("errorDataMancante_"+corso.getCod()) %>
-					<% } %>
-				</div>
-				<div>
+			<br>
+
+			<%
+			for (Corso corso : corsi) {
+				System.out.println(corso);
+				Integer i = new Integer((int) corso.getCod());
+			%>
+		
+		<div>
+
+			<input type="checkbox"
+				onclick="ShowHideDiv('divToHide<%=corso.getCod()%>')"
+				name="numeroCorso"
+				<%if (map.containsKey(i)) {
+	if (map.get(i) == 12) {
+		out.print("disabled");
+	}
+}%>>
+			<label for="<%=corso.getCod()%>"><%=corso.getNome()%></label>
+
+			<%
+			if (map.containsKey(i)) {
+				out.print("Disponibili " + (12 - map.get(i)) + "/12");
+			} else {
+				out.print("Disponibili 12/12");
+			}
+			%>
+
+
+			<div id="divToHide<%=corso.getCod()%>" style="display: none">
+				<label>Data inizio</label> <input type="text"
+					placeholder="DD/MM/YYYY"> <label>Data fine</label> <input
+					type="text" placeholder="DD/MM/YYYY">
+				<%
+				if (errori.containsKey("errorData_" + corso.getCod())) {
+				%>
+				<p><%=errori.get("errorCognome")%>
 					<%
-						
-					
-					
+					}
+					%>
+					<%
+					if (errori.containsKey("errorDataInvertita_" + corso.getCod())) {
 					%>
 				
+				<p><%=errori.get("errorDataInvertita_" + corso.getCod())%>
+					<%
+					}
+					%>
+					<%
+					if (errori.containsKey("errorDataInterval_" + corso.getCod())) {
+					%>
 				
-				</div>
+				<p><%=errori.get("errorDataInterval_" + corso.getCod())%>
+					<%
+					}
+					%>
+					<%
+					if (errori.containsKey("errorDataMancante_" + corso.getCod())) {
+					%>
 				
-		</div>
-		
-		
-	
-		
-		
-		
-		
-		
-		
+				<p><%=errori.get("errorDataMancante_" + corso.getCod())%>
+					<%
+					}
+					%>
+				
+			</div>
+			<div>
+				<%
 
-		
-		
-		<% } %>
- 		<label for="precedenti">Precedenti Formativi <input
-				type="radio" name="precedenti" value="1" checked="checked">Si
+				%>
+
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		<%
+		}
+		%>
+		<label for="precedenti">Precedenti Formativi <input
+			type="radio" name="precedenti" value="1" checked="checked">Si
 			<input type="radio" name="precedenti" value="0">No
 		</label> <br> <input type="submit" value="invia">
 
 	</form>
-	
-	
 
+
+
+	<script type="text/javascript">
+    function ShowHideDiv(corso) {
+    	var el = document.getElementById(corso);
+    	if(el.style.display == "none")
+        	el.style.display = "block";
+    	else
+    		el.style.display = "none";
+    }
+</script>
 </body>
 </html>
 
