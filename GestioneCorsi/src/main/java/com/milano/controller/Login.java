@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
 				if (userpass != null) {
 					if (userpass.equals(password)) {
 						session.setAttribute("username", username);
-						response.sendRedirect("riepilogocorsisti.jsp");
+						response.sendRedirect("riepilogoCorsisti.jsp");
 					} else {
 						session.setAttribute("errori", err+1);
 						response.sendRedirect("index.jsp");
