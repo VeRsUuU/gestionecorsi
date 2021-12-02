@@ -84,7 +84,7 @@ public class InserisciCorsista extends HttpServlet {
 					AdminFacade.getIstance().createCorsoCorsista(Long.parseLong(id), corsista.getCodCorsista());
 				}
 				
-				response.sendRedirect("validazioneriuscita.jsp");
+				response.sendRedirect("riepilogocorsisti.jsp");
 				
 			} catch (DAOException | ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
