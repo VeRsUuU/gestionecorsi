@@ -3,6 +3,7 @@ package com.milano.businesscomponent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -15,6 +16,7 @@ import com.milano.businesscomponent.model.Corsista;
 import com.milano.businesscomponent.model.Corso;
 import com.milano.businesscomponent.model.CorsoCorsista;
 import com.milano.businesscomponent.model.Docente;
+import com.milano.businesscomponent.utilities.Validazione;
 
 public class AdminFacade {
 	private static AdminFacade istanza;
@@ -100,10 +102,14 @@ public class AdminFacade {
 	
 	//metodi Corso_Corsista
 	
-	public HashMap<Corso,Integer> getIscritti() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+	public HashMap<Integer,Integer> getIscritti() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 	CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
 		return ccBC.getMap();
 	}
+	
+	public HashMap<String,String> getErrori(String nome, String cognome, HashMap<Integer, Date[]> map) throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+			return Validazione.valida(nome,cognome,map);
+		}
 	
 	public void createCorsoCorsista(long idcorso, long idcorsista)
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
