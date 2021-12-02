@@ -1,6 +1,7 @@
 <%@page import="com.milano.businesscomponent.model.Docente"%>
 <%@page import="com.milano.businesscomponent.AdminFacade"%>
 <%@page import="com.milano.businesscomponent.model.Corso"%>
+<%@page import="com.milano.businesscomponent.model.Corsista"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.milano.architecture.dbaccess.DBAccess"%>
 <%@page import="com.milano.architecture.dao.CorsistaDAO"%>
@@ -19,9 +20,12 @@
 <%
 ArrayList<Corso>piuF= new ArrayList<Corso>();
 piuF=AdminFacade.getIstance().getCorsoPiuFrequentato();
-if(piuF.isEmpty()){
+Corsista[] elenco;
+elenco=AdminFacade.getIstance().getAllCorsista();
+if(piuF.isEmpty() && elenco.length==0){
 %>
-<p>non stampa niente</p>
+<p>non stampa niente l'arrayList</p>
+<p>non stampa niente l'array</p>
 <%
 }else{
 	for(Corso corso: piuF){
@@ -29,6 +33,11 @@ if(piuF.isEmpty()){
 <p>corso piu frequentato <%=corso.getNome()%></p>
 <%
 }
+	for(Corsista corsista:elenco){
+		%>
+		<p>elenco dei corsisti : <%=corsista.getNomeCorsista()+"  "%> <%=corsista.getCognomeCorsista()%></p>
+		<%
+		} 
 }
 Integer tot=AdminFacade.getIstance().getotCorsisti();
 Corso corsodt=new Corso();

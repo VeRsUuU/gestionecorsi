@@ -58,7 +58,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		
 		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery("select cod_corso,nome_corso,data_inizio, data_fine, commento,aula_corso,costo_corso,count(cod_corso) "
-				+ "from corso inner join corso_corsista using(cod_corso) "
+				+ "from corso inner join corso_corsista using(cod_corso)"
 				+ "group by cod_corso,nome_corso,data_inizio,data_fine,commento,aula_corso,costo_corso");
 		
 		rs.beforeFirst();
