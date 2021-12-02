@@ -38,6 +38,14 @@ public class AdminFacade {
 		return adminBC.getById(admin);
 
 	}
+	
+	public Admin getByIdUsername(String username)
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		AdminBC adminBC = new AdminBC();
+
+		return adminBC.getById(username);
+
+	}
 
 	//metodi corsi
 	public Corso getByIdCorsi(long id)
