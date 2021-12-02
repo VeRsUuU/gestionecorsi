@@ -96,6 +96,20 @@ class CorsistaDAOTest {
 		
 	}
 	
+	@Test
+	@Order(3)
+	void testot() {
+		
+		try {
+			CorsistaDAO dao = new CorsistaDAO();
+			assertNotNull(dao.getot(conn));
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail(exc.getMessage());
+		}
+		
+	}
+	
 	@AfterEach
 	void TearDownAfterClass() throws DAOException {
 		

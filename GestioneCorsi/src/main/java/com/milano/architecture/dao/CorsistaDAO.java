@@ -116,5 +116,24 @@ public class CorsistaDAO {
 		
 		return corsista;
 	}
+	
+	
+	public Integer getot(Connection conn)throws DAOException{
+		Integer a;
+		
+		try {
+			String SELECT_TOT_CORSISTI = "select count(nome_corsista) as tot from corsista";
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_TOT_CORSISTI);
+			rs.next();
+			a=rs.getInt(1);
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		
+		return a;
+		
+	}
 
 }

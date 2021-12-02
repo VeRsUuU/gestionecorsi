@@ -1,3 +1,5 @@
+<%@page import="com.milano.architecture.dbaccess.DBAccess"%>
+<%@page import="com.milano.architecture.dao.CorsistaDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,10 +10,13 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
-<jsp:include page="pageformat/nav.jsp" />
+<jsp:include page="pageformat/nav.jsp"/>
 
-
-
+<%
+CorsistaDAO a=new CorsistaDAO();
+Integer tot=a.getot(DBAccess.getConnection());
+%>
+<p>numero totali corsisti <%= tot %></p>
 
 
 
