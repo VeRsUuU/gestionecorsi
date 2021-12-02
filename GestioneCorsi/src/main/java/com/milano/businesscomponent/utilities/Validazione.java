@@ -13,10 +13,8 @@ import com.milano.businesscomponent.model.Corso;
 
 public class Validazione {
 
-	public static HashMap<String, String> valida(String nomeCorsista, 
-			String cognomeCorsista,
-			HashMap<Integer, Date[]> mappa) 
-					throws DAOException {
+	public static HashMap<String, String> valida(String nomeCorsista, String cognomeCorsista,
+			HashMap<Integer, Date[]> mappa) throws DAOException {
 		HashMap<String, String> errori = new HashMap<String, String>();
 		try {
 			Pattern pattern = Pattern.compile("[a-zA-Z]{3,30}");
@@ -26,10 +24,10 @@ public class Validazione {
 				errori.put("errorNome", "Il campo nome non è valido");
 			}
 
-			pattern = Pattern.compile("[a-zA-Z]{3,30}");
-			matcher = pattern.matcher(cognomeCorsista);
+			Pattern pattern2 = Pattern.compile("[a-zA-Z]{3,30}");
+			Matcher matcher2 = pattern2.matcher(cognomeCorsista);
 
-			if (matcher.matches() == false) {
+			if (matcher2.matches() == false) {
 				errori.put("errorCognome", "Il campo cognome non è valido");
 			}
 
@@ -37,23 +35,30 @@ public class Validazione {
 
 			for (Integer key : keys) {
 				Date[] date = mappa.get(key);
-
+				CorsoBC cBC = new CorsoBC();
+				Corso c = cBC.getById((long) key);
+				
+				System.out.println(date[0]);
+				System.out.println(date[1]);
+				System.out.println(c.getDataInizio());
+				System.out.println(c.getDataFine());
+				
 				if (date[0] != null && date[1] != null) {
 
-					CorsoBC cBC = new CorsoBC();
-
-					Corso c = cBC.getById((long) key);
-					if (date[0] != null && date[1] != null) {
-						if (date[0].before(c.getDataInizio()) || date[1].after(c.getDataFine())) {
+					if (date[0].before(c.getDataInizio())|| date[1].after(c.getDataFine())) 
+						errori.put("errorData_" + c.getNome(),
+								"Errore nell'inserimento della data relativa al corso: " + c.getNome());
+					
+						if(date[0].after(date[1]))
 							errori.put("errorData_" + c.getNome(),
-									"Errore nell'inserimento della data relativa al corso: " + c.getNome());
-						}
-					} else {
-						errori.put("errorDataMancante" + c.getNome(),
-								"Errore data mancante relativa al corso: " + c.getNome());
-					}
-
+									"INVERETI KEKKO OKAY LEZ GOOOOOOO: " + c.getNome());
+					
+							
+				} else {
+					errori.put("errorDataMancante" + c.getNome(),
+							"Errore data mancante relativa al corso: " + c.getNome());
 				}
+
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
