@@ -142,15 +142,18 @@ public class CorsistaDAO {
 		CorsoDAO cdao = new CorsoDAO();
 
 		try {
-			ps = conn.prepareStatement("select cod_corso from corso_corsista where cod_corsista = ?");
+			ps = conn.prepareStatement("select cod_corso from corso_corsista where cod_corsista = ?",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
+			rs.beforeFirst();
 
+			corsi = new ArrayList<Corso>();
 			while (rs.next()) {
-				corsi = new ArrayList<Corso>();
 				Corso corso = new Corso();
 				corso = cdao.getById(conn, rs.getLong(1));
 				corsi.add(corso);
+				System.out.println(corsi.get(corsi.size() - 1));
 			}
 		} catch (SQLException exc) {
 			throw new DAOException(exc);

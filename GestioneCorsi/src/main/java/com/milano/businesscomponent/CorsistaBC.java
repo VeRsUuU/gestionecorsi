@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.milano.architecture.dao.CorsistaDAO;
-import com.milano.architecture.dao.CorsoDAO;
 import com.milano.architecture.dao.DAOException;
 import com.milano.architecture.dbaccess.DBAccess;
 import com.milano.businesscomponent.model.Corsista;
@@ -78,8 +77,19 @@ public class CorsistaBC {
 		try {
 			CorsistaDAO cbc = new CorsistaDAO();
 			Connection conn = DBAccess.getConnection();
-			Integer totCorsisti= cbc.getot(conn) ;
+			Integer totCorsisti = cbc.getot(conn);
 			return totCorsisti;
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
+
+	public void disicrivi(long idCorso, long idCorsista) throws DAOException, ClassNotFoundException, IOException {
+		try {
+			CorsistaDAO cbc = new CorsistaDAO();
+			cbc.disiscrivi(DBAccess.getConnection(), idCorso, idCorsista);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
