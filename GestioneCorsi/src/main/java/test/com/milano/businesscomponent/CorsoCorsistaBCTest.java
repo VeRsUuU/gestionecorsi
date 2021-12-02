@@ -34,10 +34,10 @@ class CorsoCorsistaBCTest {
 	void test2() {
 		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		try {
-			HashMap<Corso, Integer> mappa = ccBC.getMap();
+			HashMap<Integer, Integer> mappa = ccBC.getMap();
 			
-			for (Map.Entry<Corso, Integer> entry : mappa.entrySet()) {
-			    System.out.println("Key = " + entry.getKey().getCod() + ", Value = " + entry.getValue());
+			for (Map.Entry<Integer, Integer> entry : mappa.entrySet()) {
+			    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 			}
 			System.out.println();
 		} catch (ClassNotFoundException | DAOException | IOException e) {
@@ -64,10 +64,10 @@ class CorsoCorsistaBCTest {
 	void test4() {
 		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		try {
-			HashMap<Corso, Integer> mappa = ccBC.getMap();
-			
-			for (Map.Entry<Corso, Integer> entry : mappa.entrySet()) {
-			    System.out.println("Key = " + entry.getKey().getCod() + ", Value = " + entry.getValue());
+			HashMap<Integer, Integer> mappa = ccBC.getMap();
+			 
+			for (Map.Entry<Integer, Integer> entry : mappa.entrySet()) {
+			    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 			}
 		} catch (ClassNotFoundException | DAOException | IOException e) {
 			// TODO Auto-generated catch block

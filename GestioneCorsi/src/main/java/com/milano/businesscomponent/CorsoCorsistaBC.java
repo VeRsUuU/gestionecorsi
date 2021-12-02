@@ -15,10 +15,10 @@ import com.milano.businesscomponent.model.CorsoCorsista;
 
 public class CorsoCorsistaBC {
 	private Connection conn;
-	
-	public HashMap<Corso, Integer> getMap() throws ClassNotFoundException, IOException, DAOException{
+	 //provaaa
+	public HashMap<Integer, Integer> getMap() throws ClassNotFoundException, IOException, DAOException{
 
-		HashMap<Corso, Integer> mappa = null;
+		HashMap<Integer, Integer> mappa = null;
 		
 			try {
 				conn = DBAccess.getConnection();

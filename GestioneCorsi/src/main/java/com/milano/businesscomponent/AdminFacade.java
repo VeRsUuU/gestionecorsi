@@ -108,7 +108,7 @@ public class AdminFacade {
 	}
 	
 	public HashMap<String,String> getErrori(String nome, String cognome, HashMap<Integer, Date[]> map) throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
-			return Validazione.valida(nome,cognome,map);
+			return Validazione.valida(nome,cognome,map); 
 		}
 	
 	public void createCorsoCorsista(long idcorso, long idcorsista)

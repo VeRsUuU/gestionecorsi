@@ -51,10 +51,10 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		}
 	}
 	
-	public HashMap<Corso, Integer> getMap(Connection conn) throws DAOException{
+	public HashMap<Integer, Integer> getMap(Connection conn) throws DAOException{
 		try {
 		
-		HashMap<Corso, Integer> mappa = new HashMap<Corso, Integer>();
+		HashMap<Integer, Integer> mappa = new HashMap<Integer, Integer>();
 		
 		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery("select cod_corso,nome_corso,data_inizio, data_fine, commento,aula_corso,costo_corso,count(cod_corso) "
@@ -62,18 +62,10 @@ public class CorsoCorsistaDAO implements DAOConstants{
 				+ "group by cod_corso,nome_corso,data_inizio,data_fine,commento,aula_corso,costo_corso");
 		
 		rs.beforeFirst();
-		Corso c = null;
 		int count = 0;
 		
 		while(rs.next()) {
-			c = new Corso();
-			c.setCod(rs.getLong(1));
-			c.setNome(rs.getString(2));
-			c.setDataInizio(new Date(rs.getDate(3).getTime()));
-			c.setDataFine(new Date(rs.getDate(4).getTime()));
-			c.setCommenti(rs.getString(5));
-			c.setAula(rs.getString(6));
-			c.setCosto(rs.getDouble(7));
+			Integer c = (int) rs.getLong(1);
 			
 			count = rs.getInt(8);
 			
