@@ -1,3 +1,13 @@
+
+<%
+	if(session.getAttribute("errori") == null) {
+		session.setAttribute("errori", 0);
+	}
+	int err = (int)session.getAttribute("errori");
+	if(err < 5) {
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -38,8 +48,30 @@
                     <button type="submit" class="btn btn-primary btn-m float-right" id="login">Accedi</button>
                 </form>
             </div>
+            <%
+            
+            	if(err >= 1) {
+            
+            %>
+            <div class="form-group" style="background-color: #FFBABA; color: red; border: 1px solid; margin: 10px 0px;  padding:20px 10px 15px 20px; background-repeat: no-repeat; background-position: 10px center;">
+            	<h5>Username o password errati</h5>
+            </div>
+            <%
+            
+            	}
+            	
+            %>
     	</div>
 	</div>
 	<footer style="position: absolute; height: 25px; bottom: 0px;"><%@include file="pageformat/footer.html" %></footer>
 </body>
 </html>
+<%
+
+	} else {
+		
+		response.sendRedirect("tentativiesauriti.jsp");
+		
+	}
+
+%>

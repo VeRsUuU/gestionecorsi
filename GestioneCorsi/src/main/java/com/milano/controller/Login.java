@@ -28,9 +28,11 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 
 		String userpass;
-
+		
 		HttpSession session = request.getSession();
 
+		int err = (int)session.getAttribute("errori");
+		
 		if (username != null && password != null) {
 			try {
 				userpass = getPassword(username);
@@ -39,9 +41,11 @@ public class Login extends HttpServlet {
 						session.setAttribute("username", username);
 						response.sendRedirect("riepilogocorsisti.jsp");
 					} else {
+						session.setAttribute("errori", err+1);
 						response.sendRedirect("index.jsp");
 					}
 				} else {
+					session.setAttribute("errori", err+1);
 					response.sendRedirect("index.jsp");
 				}
 			} catch (DAOException | ClassNotFoundException exc) {
