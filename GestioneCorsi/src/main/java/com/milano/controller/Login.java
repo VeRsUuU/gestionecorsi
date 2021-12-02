@@ -17,26 +17,27 @@ import com.milano.architecture.dao.DAOException;
 import com.milano.architecture.dbaccess.DBAccess;
 
 @WebServlet("/login")
-public class Login extends HttpServlet{
+public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = 2094656142566166734L;
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		String userpass;
-		
+
 		HttpSession session = request.getSession();
-		
-		if(username != null && password != null) {
+
+		if (username != null && password != null) {
 			try {
 				userpass = getPassword(username);
-				if(userpass != null) {
-					if(userpass.equals(password)) {
+				if (userpass != null) {
+					if (userpass.equals(password)) {
 						session.setAttribute("username", username);
-						response.sendRedirect("registra.jsp");
+						response.sendRedirect("riepilogocorsisti.jsp");
 					} else {
 						response.sendRedirect("index.jsp");
 					}
@@ -44,33 +45,29 @@ public class Login extends HttpServlet{
 					response.sendRedirect("index.jsp");
 				}
 			} catch (DAOException | ClassNotFoundException exc) {
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("accessonegato.jsp");
 				exc.printStackTrace();
 				throw new ServletException(exc.getMessage());
 			}
 		}
-		
+
 	}
-	
+
 	private String getPassword(String username) throws ClassNotFoundException, IOException, DAOException {
-		
+
 		Connection conn = DBAccess.getConnection();
-		
+
 		try {
 			PreparedStatement ps = conn.prepareStatement("select password from amministratore where username = ?");
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				conn.close();
+			if (rs.next()) {
 				return rs.getString(1);
-			}
+			} 
 			conn.close();
 			return null;
-		} catch(SQLException exc) {
+		} catch (SQLException exc) {
 			throw new DAOException(exc);
 		}
-		
 	}
-
 }
