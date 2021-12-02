@@ -118,24 +118,22 @@ public class CorsistaDAO {
 
 		return corsista;
 	}
-	
-	
-	public Integer getot(Connection conn)throws DAOException{
+
+	public Integer getot(Connection conn) throws DAOException {
 		Integer a;
-		
+
 		try {
 			String SELECT_TOT_CORSISTI = "select count(nome_corsista) as tot from corsista";
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_TOT_CORSISTI);
 			rs.next();
-			a=rs.getInt(1);
+			a = rs.getInt(1);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 
-		
 		return a;
-		
+
 	}
 
 	public ArrayList<Corso> getCorsiByIdCorsista(Connection conn, long id) throws DAOException {
@@ -158,6 +156,18 @@ public class CorsistaDAO {
 			throw new DAOException(exc);
 		}
 		return corsi;
+	}
+
+	public void disiscrivi(Connection conn, long id) throws DAOException {
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("delete corso_corsista where cod_corso = ?");
+			ps.setLong(1, id);
+			ps.execute();
+			conn.commit();
+		} catch (SQLException exc) {
+			throw new DAOException(exc);
+		}
 	}
 
 }
