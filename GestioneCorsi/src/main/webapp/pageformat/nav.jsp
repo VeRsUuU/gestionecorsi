@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 	    <div class="navbar-header">
 	        
-	        <a class="navbar-brand" href="#.jsp">Betacom Milano</a>
+	        <a class="navbar-brand" href="index.jsp">Betacom Milano</a>
 	        
 	    </div>
 	    <div id ="menu">

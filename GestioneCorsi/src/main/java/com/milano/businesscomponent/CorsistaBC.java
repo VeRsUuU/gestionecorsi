@@ -3,6 +3,7 @@ package com.milano.businesscomponent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.milano.architecture.dao.CorsistaDAO;
 import com.milano.architecture.dao.DAOException;
@@ -59,11 +60,11 @@ public class CorsistaBC {
 		return corsisti;
 	}
 
-	public Corso[] getCorsi(long id) throws DAOException, ClassNotFoundException, IOException {
-		Corso[] corsi = null;
+	public ArrayList<Corso> getCorsi(long id) throws DAOException, ClassNotFoundException, IOException {
+		ArrayList<Corso> corsi = null;
 		try {
 			CorsistaDAO corsistaDAO = new CorsistaDAO();
-			corsi = (Corso[]) corsistaDAO.getCorsiByIdCorsista(DBAccess.getConnection(), id).toArray();
+			corsi = corsistaDAO.getCorsiByIdCorsista(DBAccess.getConnection(), id);
 
 		} catch (SQLException sql) {
 			throw new DAOException(sql);

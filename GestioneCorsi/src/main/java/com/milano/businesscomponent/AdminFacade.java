@@ -110,7 +110,7 @@ public class AdminFacade {
 
 	}
 
-	public Corso[] getCorsiCorsistaById(long id) throws DAOException, ClassNotFoundException, IOException {
+	public ArrayList<Corso> getCorsiCorsistaById(long id) throws DAOException, ClassNotFoundException, IOException {
 		CorsistaBC cbc = new CorsistaBC();
 		return cbc.getCorsi(id);
 	}
