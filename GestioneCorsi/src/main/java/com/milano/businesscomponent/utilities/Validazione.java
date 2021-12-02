@@ -12,7 +12,7 @@ import com.milano.architecture.dao.DAOException;
 import com.milano.businesscomponent.CorsoBC;
 import com.milano.businesscomponent.model.Corso;
 
-public class Validazione {
+public class Validazione { 
 
 	public static HashMap<String, String> valida(String nomeCorsista, String cognomeCorsista,
 			HashMap<Integer, Date[]> mappa) throws DAOException {

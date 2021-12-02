@@ -143,7 +143,7 @@
 				<input type="text" placeholder="<%=formato.format(corso.getDataFine())%>"
 					name="dataFine<%=corso.getCod()%>" class="form-control-inline">
 			</div>
-			</div>
+			</div> 
 			</div>
 			
 
