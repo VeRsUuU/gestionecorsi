@@ -11,9 +11,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/main-style.css">
+		<%@include file="CDN/bootstrap4CDN.html"%>
 <title>Inserisci Corsista</title>
 </head>
 <body>
+<jsp:include page="pageformat/nav.jsp"/>
 	<%
 	HashMap<Integer, Integer> map = AdminFacade.getIstance().getIscritti();
 	ArrayList<Corso> corsi = AdminFacade.getIstance().getAllCorso();
