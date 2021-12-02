@@ -85,11 +85,9 @@ class CorsoDAOTest {
 			for (int i = 0; i < corsi.size(); i++) {
 				System.out.println(corsi.get(i).toString());
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
