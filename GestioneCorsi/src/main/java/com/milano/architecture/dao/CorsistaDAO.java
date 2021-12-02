@@ -158,11 +158,12 @@ public class CorsistaDAO {
 		return corsi;
 	}
 
-	public void disiscrivi(Connection conn, long id) throws DAOException {
+	public void disiscrivi(Connection conn, long idCorso, long idCorsista) throws DAOException {
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement("delete corso_corsista where cod_corso = ?");
-			ps.setLong(1, id);
+			ps = conn.prepareStatement("delete corso_corsista where cod_corso = ? and cod_corsista = ?");
+			ps.setLong(1, idCorso);
+			ps.setLong(2, idCorsista);
 			ps.execute();
 			conn.commit();
 		} catch (SQLException exc) {

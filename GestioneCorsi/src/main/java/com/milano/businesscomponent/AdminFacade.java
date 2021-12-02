@@ -109,9 +109,9 @@ public class AdminFacade {
 		return cbc.getCorsi(id);
 	}
 
-	public void disiscrivi(long idCorso) throws ClassNotFoundException, DAOException, IOException {
+	public void disiscrivi(long idCorso, long idCorsista) throws ClassNotFoundException, DAOException, IOException {
 		CorsistaBC cbc = new CorsistaBC();
-		cbc.disicrivi(idCorso);
+		cbc.disicrivi(idCorso, idCorsista);
 	}
 
 	// metodi Corso_Corsista
