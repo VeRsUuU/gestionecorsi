@@ -81,13 +81,9 @@
       <%
      	 	}
       %>
-	  <td>
-      <form action="/<%=application.getServletContextName()%>/elimina" method="post">
-			<button type="submit" class="btn btn-danger">elimina corsi
-				<i class="bi bi-trash"></i>
-			</button>
-	  </form>
-	  </td>
+	  
+	  <td><a href="elimina.jsp" class="btn btn-danger">elimina corsi <i
+							class="bi bi-trash"></i></a></td>
 	  <%
  		    }
 	  %>
