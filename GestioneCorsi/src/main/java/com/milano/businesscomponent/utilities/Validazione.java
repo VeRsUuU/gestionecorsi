@@ -1,7 +1,9 @@
 package com.milano.businesscomponent.utilities;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -37,25 +39,32 @@ public class Validazione {
 				Date[] date = mappa.get(key);
 				CorsoBC cBC = new CorsoBC();
 				Corso c = cBC.getById((long) key);
-				
-				System.out.println(date[0]);
-				System.out.println(date[1]);
-				System.out.println(c.getDataInizio());
-				System.out.println(c.getDataFine());
-				
+
+
+				Calendar dataInizioPiu2 = Calendar.getInstance();
+				dataInizioPiu2.setTime(date[0]);
+				dataInizioPiu2.add(Calendar.DAY_OF_YEAR, 1);
+
+				Calendar dataFine = Calendar.getInstance();
+				dataFine.setTime(date[1]);
+
+
 				if (date[0] != null && date[1] != null) {
 
-					if (date[0].before(c.getDataInizio())|| date[1].after(c.getDataFine())) 
-						errori.put("errorData_" + c.getNome(),
-								"Errore nell'inserimento della data relativa al corso: " + c.getNome());
-					
-						if(date[0].after(date[1]))
-							errori.put("errorData_" + c.getNome(),
-									"INVERETI KEKKO OKAY LEZ GOOOOOOO: " + c.getNome());
-					
-							
+					if (date[0].before(c.getDataInizio()) || date[1].after(c.getDataFine()))
+						errori.put("errorData_" + c.getCod(), "Il corso " + c.getNome() + " deve essere compreso tra : "
+								+ c.getDataInizio() + " e " + c.getDataFine());
+
+					if (date[0].after(date[1])) {
+						errori.put("errorDataInvertita_" + c.getCod(),
+								"Impossibile inserire una data di inizio minore della data di fine: " + c.getNome());
+					} else if (dataInizioPiu2.after(dataFine)) {
+						errori.put("errorDataInterval_" + c.getCod(),
+								"Il corso deve durare almeno 2 gg: " + c.getNome());
+					}
+
 				} else {
-					errori.put("errorDataMancante" + c.getNome(),
+					errori.put("errorDataMancante_" + c.getCod(),
 							"Errore data mancante relativa al corso: " + c.getNome());
 				}
 
