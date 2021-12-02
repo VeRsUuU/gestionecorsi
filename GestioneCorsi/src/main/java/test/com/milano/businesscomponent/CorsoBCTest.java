@@ -77,6 +77,39 @@ class CorsoBCTest {
 		}
 
 	}
+	
+	@Test
+	@Order(4)
+	void testdtInizioUltimo() throws ClassNotFoundException, IOException {
+
+		System.out.println("dsadasdasdasdasdasda");
+
+		try {
+			CorsoBC bcCorso = new CorsoBC();
+			Corso corso = bcCorso.dataInizioUltimoCorso();
+			System.out.println(corso.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	@Order(5)
+	void testTotCommeti() throws ClassNotFoundException, IOException {
+
+		System.out.println("commentiiiiiiiiii");
+
+		try {
+			CorsoBC bcCorso = new CorsoBC();
+			Integer com= bcCorso.getotCommenti();
+			System.out.println(com);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {

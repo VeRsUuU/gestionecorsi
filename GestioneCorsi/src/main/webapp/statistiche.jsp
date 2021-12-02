@@ -16,13 +16,9 @@
 <jsp:include page="pageformat/nav.jsp"/>
 
 <%
-CorsistaDAO a=new CorsistaDAO();
-Integer tot=a.getot(DBAccess.getConnection());
-
 ArrayList<Corso>piuF= new ArrayList<Corso>();
 piuF=AdminFacade.getIstance().getCorsoPiuFrequentato();
 if(piuF.isEmpty()){
-	
 %>
 <p>non stampa niente</p>
 <%
@@ -33,10 +29,15 @@ if(piuF.isEmpty()){
 <%
 }
 }
+Integer tot=AdminFacade.getIstance().getotCorsisti();
+Corso corsodt=new Corso();
+corsodt=AdminFacade.getIstance().getDataUltimoCorso();
+Integer totCommenti=AdminFacade.getIstance().getTotCommenti();
+
 %>
 <p>numero totali corsisti <%= tot %></p>
-
-
+<p>nome dell'ultimo corso : <%= corsodt.getNome() %>, data inizio dell'ultimo corso : <%= corsodt.getDataInizio() %> </p>
+<p>numero totali commenti presenti : <%= totCommenti %></p>
 
 
 

@@ -107,4 +107,18 @@ public class CorsoDAO {
 		return corso;
 	}
 
+	public Integer getotCommenti(Connection conn) throws DAOException {
+		String TOT_COMENTI="select count(commento) from corso";
+		Integer a;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(TOT_COMENTI);
+			rs.next();
+			a=rs.getInt(1);
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return a;
+	}
+
 }

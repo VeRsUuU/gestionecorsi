@@ -41,7 +41,7 @@ class CorsistaBCTest {
 	}
 	
 	@Test
-	@Order(4)
+	@Order(5)
 	void testDelete() throws ClassNotFoundException, FileNotFoundException, IOException {
 		try {
 			CorsistaBC bc = new CorsistaBC();
@@ -72,6 +72,19 @@ class CorsistaBCTest {
 		try {
 			CorsistaBC bc = new CorsistaBC();
 			assertNotNull(bc.getById(corsista));
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail(exc.getMessage());
+		}
+	}
+	
+	@Test
+	@Order(4)
+	void testtotCorsista() throws ClassNotFoundException, FileNotFoundException, IOException {
+		try {
+			CorsistaBC bc = new CorsistaBC();
+			System.out.println("tot "+ bc.getTotCorsisti());
+			assertNotNull(bc.getTotCorsisti());
 		} catch(DAOException exc) {
 			exc.printStackTrace();
 			fail(exc.getMessage());
