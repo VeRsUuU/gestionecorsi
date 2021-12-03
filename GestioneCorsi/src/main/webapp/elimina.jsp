@@ -72,7 +72,15 @@ if (admin == null)
 		}
 		%>
 	</div>
-
+	<br>
+	<br>
+	<div class="container" align="center">
+		<a href="recapCorsisti.jsp">
+			<button type="button" class="btn btn-primary">
+				Torna al riepilogo <i class="bi bi-box-arrow-left"></i>
+			</button>
+		</a>
+	</div>
 	<%@include file="pageformat/footer.html"%>
 </body>
 </html>
