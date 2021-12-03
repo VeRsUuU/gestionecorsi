@@ -13,13 +13,34 @@ import com.milano.businesscomponent.model.Docente;
 public class DocenteDAO {
 	String SELECT_DOCENTE_BYID = "Select * from docente where cod_docente = ?";
 	String SELECT_DOCENTE_MAX_CORSI = "select cod_docente, count(cod_docente) from docente inner join corso using (cod_docente) group by cod_docente";
-
+	String SELECT_DOCENTE_BYIDCORSO = "Select cod_docente, nome_docente, cognome_docente, cv_docente from docente inner join corso using(cod_docente) where cod_corso = ?";
+	
 	public Docente getById(Connection conn, long codDocente) throws DAOException {
 		Docente docente = null;
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(SELECT_DOCENTE_BYID);
 			ps.setLong(1, codDocente);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				docente = new Docente();
+				docente.setCodDocente(rs.getLong(1));
+				docente.setNomeDocente(rs.getString(2));
+				docente.setCognomeDocente(rs.getString(3));
+				docente.setCvDocente(rs.getString(4));
+			}
+		} catch (SQLException exc) {
+			throw new DAOException(exc);
+		}
+		return docente;
+	}
+	
+	public Docente getByIdCorso(Connection conn, long codCorso) throws DAOException {
+		Docente docente = null;
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SELECT_DOCENTE_BYIDCORSO);
+			ps.setLong(1, codCorso);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				docente = new Docente();

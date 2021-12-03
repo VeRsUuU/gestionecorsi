@@ -22,6 +22,17 @@ public class DocenteBC {
 			DBAccess.closeConnection();
 		}
 	}
+	
+	public Docente getByIdCorso(long codCorso) throws DAOException, ClassNotFoundException, IOException {
+		try {
+			DocenteDAO dao = new DocenteDAO();
+			return dao.getByIdCorso(DBAccess.getConnection(), codCorso);
+		} catch (SQLException exc) {
+			throw new DAOException(exc);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
 
 	public Docente getDocenteMaxCorsi() throws DAOException, ClassNotFoundException, IOException {
 		try {

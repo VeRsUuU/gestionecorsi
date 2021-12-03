@@ -1,3 +1,4 @@
+<%@page import="com.milano.businesscomponent.model.Docente"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.milano.businesscomponent.model.Admin"%>
@@ -81,7 +82,8 @@
 			<%
 			for (Corso corso : corsi) {
 				System.out.println(corso);
-				Integer i = new Integer((int) corso.getCod());
+				Integer i = (int) corso.getCod();
+				Docente d = AdminFacade.getIstance().getDocenteByIdCorso(corso.getCod());
 			%>
 		
 		<div class="row">
@@ -174,6 +176,7 @@
 				<p>Costo: <%= corso.getCosto() %>&euro;</p><hr>
 				<p>Aula di svolgimento: <%= corso.getAula() %></p><hr>
 				<p>Commenti: <%= corso.getCommenti() %></p><hr>
+				<p>Docente: <%= d.getNomeDocente() %> <%= d.getCognomeDocente() %></p><hr>
 			</div>
 			</div> 
 			</div>

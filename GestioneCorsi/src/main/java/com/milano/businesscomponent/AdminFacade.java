@@ -171,6 +171,14 @@ public class AdminFacade {
 		return dBC.getById(codDocente);
 
 	}
+	
+	public Docente getDocenteByIdCorso(long codCorso)
+			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+		DocenteBC dBC = new DocenteBC();
+
+		return dBC.getByIdCorso(codCorso);
+
+	}
 
 	public Docente getMaxCorsi() throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		DocenteBC dBC = new DocenteBC();
