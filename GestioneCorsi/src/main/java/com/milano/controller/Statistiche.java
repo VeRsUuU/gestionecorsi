@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.milano.architecture.dao.DAOException;
-import com.milano.businesscomponent.AdminFacade;
 
 @WebServlet("/statistiche")
 public class Statistiche extends HttpServlet {

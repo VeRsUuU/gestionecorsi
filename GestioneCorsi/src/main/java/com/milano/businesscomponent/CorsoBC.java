@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.milano.architecture.dao.CorsoDAO;
 import com.milano.architecture.dao.DAOException;

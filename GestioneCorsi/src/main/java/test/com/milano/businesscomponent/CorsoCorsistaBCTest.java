@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import com.milano.architecture.dao.DAOException;
 import com.milano.businesscomponent.CorsoCorsistaBC;
-import com.milano.businesscomponent.model.Corso;
 import com.milano.businesscomponent.model.CorsoCorsista;
 
 class CorsoCorsistaBCTest {

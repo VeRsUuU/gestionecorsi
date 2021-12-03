@@ -136,7 +136,7 @@ if (admin != null) {
 							</div>
 
 	<!-- PULSANTI -->
-		<table class="table table-striped">
+		<table class="table table-striped" style="margin: auto;">
 			<tbody align="center">
 				<tr>
 					<td><a class="btn btn-primary" href="inserisciCorsista.jsp">Inserisci

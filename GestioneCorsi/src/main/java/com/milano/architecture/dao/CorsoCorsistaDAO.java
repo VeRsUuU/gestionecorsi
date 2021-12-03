@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
-import com.milano.businesscomponent.model.Corso;
 import com.milano.businesscomponent.model.CorsoCorsista;
 
 public class CorsoCorsistaDAO implements DAOConstants{
