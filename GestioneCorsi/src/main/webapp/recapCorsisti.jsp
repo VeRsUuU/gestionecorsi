@@ -99,7 +99,7 @@ if (admin != null) {
 							corsista</a></td>
 					<td>
 						<form
-							action="/<%=application.getServletContextName()%>/statistiche"
+							action="statistiche.jsp"
 							method="post">
 							<button type="submit" class="btn btn-success">
 								visualizza statistiche <i class="bi bi-bar-chart-fill"></i>
