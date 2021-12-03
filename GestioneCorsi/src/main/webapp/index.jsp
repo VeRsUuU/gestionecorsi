@@ -52,7 +52,7 @@ if (err < 5) {
 		<div class="page-header">
 			<br>
 			<h3>Accedi all'area amministratori</h3>
-			<br> <br>
+			<br>
 		</div>
 		<div class="card card-outline-secondary">
 			<div class="card-header">

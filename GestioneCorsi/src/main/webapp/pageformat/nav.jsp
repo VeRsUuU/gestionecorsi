@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 
-			<a class="navbar-brand" href="index.jsp">Betacom Milano</a>
+			<a class="navbar-brand" href="#">Betacom Milano</a>
 
 		</div>
 		<div id="menu">
@@ -22,7 +22,7 @@
 						</button>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="recapCorsisti.jsp"> <i
-								class="bi bi-pencil-square"></i>&nbsp; Gestione Corsisti
+								class="bi bi-pencil-square"></i>&nbsp; Gestione corsisti
 							</a> <a class="dropdown-item" href="logout.jsp"> <i
 								class="bi bi-box-arrow-in-right"></i>&nbsp; Logout
 							</a>

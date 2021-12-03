@@ -3,18 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="CDN/bootstrap4CDN.html" %>
 <meta charset="ISO-8859-1">
-<title>I tuoi tentativi sono esauriti</title>
+<link rel="stylesheet" href="css/style.css">
+<title>Accesso negato!</title>
 </head>
 <body>
-	<div style="padding: 20px 15px 15px 20px;">
-		
-		<%
-			int err;
-		%>
-		<h1>sei su questa pagina perchè hai finito i tuoi tentativi di accesso.</h1>
-		<h2 style="padding-top: 10px;">per riprovare<a href="index.jsp?param=<%=err=0%>"> clicca qui</a></h2>
-		
+	<jsp:include page="pageformat/nav.jsp"/>
+	<div class="container" style="background-color: #FFBABA; color: red; border: 1px solid; padding: 20px 10px 15px 20px; background-repeat: no-repeat; background-position: 10px center;">
+		<div class="page-header">
+			<h3>Hai esaurito i tentativi di accesso.</h3>
+			<br>
+		</div>
+		<div class="page-body">
+			<%
+				int err;
+			%>
+			<h4 style="padding-top: 10px;">Riavvia il browser oppure <a href="index.jsp?param=<%=err=0%>">torna alla schermata di accesso</a></h4>
+		</div>
 	</div>
-
-</body></html>
+	<%@include file="pageformat/footer.html"%>
+</body>
+</html>

@@ -12,20 +12,15 @@
 </head>
 <body>
 <jsp:include page="pageformat/nav.jsp"/>
-<div class="container">
-<div class="page-header">
-	<h3>Non puoi accedere a questa pagina</h3>
-</div>
-<div class="panel panel-danger">
-	<div class="panel-heading">
-		<h3>Risorsa non disponibile</h3>
+<div class="container" style="background-color: #FFBABA; color: red; border: 1px solid; padding: 20px 10px 15px 20px; background-repeat: no-repeat; background-position: 10px center;">
+	<div class="page-header">
+		<h3>Area riservata.</h3>
+		<br>
 	</div>
-	<div class="panel-body">
-		<p>Per accedere alla pagina effettua il login:</p>
-		<p><a href="index.jsp">Login >></a>	
+	<div class="page-body">
+		<h4>Per accedere alla pagina effettua il <a href="index.jsp">login</a></h4>
 	</div>
 </div>
-</div>
-<footer style="position: absolute; height: 25px; bottom: 0px;"><%@include file="pageformat/footer.html" %></footer>
+<%@include file="pageformat/footer.html"%>
 </body>
 </html>
