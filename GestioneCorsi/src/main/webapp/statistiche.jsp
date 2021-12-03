@@ -1,9 +1,11 @@
 
+<%@page import="java.util.HashMap"%>
 <%
 if (session.getAttribute("username") == null)
 	response.sendRedirect("accessonegato.jsp");
 %>
 
+<%@page import="java.util.Map.Entry"%>
 <%@page import="com.milano.businesscomponent.model.Docente"%>
 <%@page import="com.milano.businesscomponent.AdminFacade"%>
 <%@page import="com.milano.businesscomponent.model.Corso"%>
@@ -135,7 +137,65 @@ if (session.getAttribute("username") == null)
 				</div>
 			</div>
 		</div>
+		
+		<div class="card text-center text-white bg-dark mb-5">
+			<div class="card-header">Riepilogo Corsisti</div>
+			<div class="card-body">
+				<h5 class="card-title">Seleziona un corsista per controllarne i
+					corsi frequentati</h5>
+		
+		
+		
+				<%
+				HashMap<String,Integer> posti=new HashMap<String,Integer>();
+				posti= AdminFacade.getIstance().getPostiDisponibili();
+				if (posti.keySet() !=null) {
+				%>
 
+				<table class="table table-hover table-dark ">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Corso</th>
+							<th scope="col">Posto</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (Entry<String,Integer>entry  : posti.entrySet()) {
+						%>
+
+						<tr >
+							<td><%=entry.getKey()%></td>
+							<td><%=entry.getValue()%></td>
+						</tr>
+
+						<%
+						}
+						%>
+					</tbody>
+				</table>
+				<%
+				} else {
+				%>
+				<p class="card-text">Al momento non sono presenti dei corsisti
+					:(</p>
+				<%
+				}
+				%>
+
+
+			</div>
+			<div class="card-footer text-white">Design by geppo</div>
+		</div>
+		
+		
+		
+
+		
+		
+		
+		
+		
 		<div class="card text-center text-white bg-dark mb-5">
 			<div class="card-header">Riepilogo Corsisti</div>
 			<div class="card-body">
@@ -183,7 +243,7 @@ if (session.getAttribute("username") == null)
 
 
 			</div>
-			<div class="card-footer text-white">Design by Betacom Milano</div>
+			<div class="card-footer text-white">Design by geppo</div>
 		</div>
 
 
