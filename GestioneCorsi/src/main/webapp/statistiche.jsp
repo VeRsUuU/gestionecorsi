@@ -1,7 +1,6 @@
 
 <%
-String admin = (String) session.getAttribute("username");
-if (admin == null)
+if (session.getAttribute("username") == null)
 	response.sendRedirect("accessonegato.jsp");
 %>
 
