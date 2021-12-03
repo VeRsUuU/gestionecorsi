@@ -5,8 +5,21 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
+
+Cookie[] cookies = request.getCookies();
+
+for(Cookie aCookie : cookies) {
+	if(aCookie.getName().equals("username")) {
+		System.out.println("cookie esiste");
+		if(aCookie.getValue() != null)
+			session.setAttribute("username", aCookie.getValue());
+			System.out.println("username impostato dal cookie" + aCookie.getValue());
+	}
+}
+
 String admin = (String) session.getAttribute("username");
 if (admin != null) {
+	
 %>
 
 <!DOCTYPE html>
@@ -36,14 +49,20 @@ if (admin != null) {
 			</thead>
 			<tbody align="center">
 				<%
-				String username = (String) session.getAttribute("username");
-				Admin amministratore = AdminFacade.getIstance().getByIdUsername(username);
+				if(session.getAttribute("username") != null) {
+					String username = (String) session.getAttribute("username");
+					Admin amministratore = AdminFacade.getIstance().getByIdUsername(username);
 				%>
 				<tr>
 					<th scope="row"><%=amministratore.getUsername()%></th>
 					<td><%=amministratore.getNomeAdmin()%></td>
 					<td><%=amministratore.getCognomeAdmin()%></td>
 				</tr>
+				<%
+				
+					}
+				
+				%>
 			</tbody>
 		</table>
 		<br> <br>
@@ -82,7 +101,7 @@ if (admin != null) {
 					}
 					%>
 						<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
-							class="btn btn-danger">elimina corsi <i class="bi bi-trash"></i></a></td>
+							class="btn btn-danger">Elimina corsi <i class="bi bi-trash"></i></a></td>
 					<%
 					}
 					%>
@@ -99,10 +118,10 @@ if (admin != null) {
 							corsista</a></td>
 					<td>
 						<form
-							action="statistiche.jsp"
+							action="/<%=application.getServletContextName()%>/statistiche"
 							method="post">
 							<button type="submit" class="btn btn-success">
-								visualizza statistiche <i class="bi bi-bar-chart-fill"></i>
+								Visualizza statistiche <i class="bi bi-bar-chart-fill"></i>
 							</button>
 						</form>
 					</td>

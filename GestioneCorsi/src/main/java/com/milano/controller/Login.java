@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,10 @@ public class Login extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		int check = 0;
+		
+		if(request.getParameter("cookie") != null)
+			check = Integer.parseInt(request.getParameter("cookie"));
 
 		String userpass;
 		
@@ -39,6 +44,13 @@ public class Login extends HttpServlet {
 				if (userpass != null) {
 					if (userpass.equals(password)) {
 						session.setAttribute("username", username);
+						
+						if(check == 1) {
+							Cookie cookie = new Cookie("username", (String) request.getParameter("username"));
+							cookie.setMaxAge(60*60);
+							response.addCookie(cookie);
+						}
+							
 						response.sendRedirect("recapCorsisti.jsp");
 					} else {
 						session.setAttribute("errori", err+1);

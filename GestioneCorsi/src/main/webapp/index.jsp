@@ -1,4 +1,4 @@
-	<%
+<%
 if (session.getAttribute("errori") == null) {
 	session.setAttribute("errori", 0);
 }
@@ -8,7 +8,7 @@ err = (int) session.getAttribute("errori");
 
 if (err == 5){
 	
-	if(request.getParameter("param") != null){
+	if(request.getParameter("param") != null) {
 		
 		err = Integer.parseInt(request.getParameter("param"));
 		session.setAttribute("errori", err);
@@ -20,9 +20,19 @@ if (err == 5){
 	
 }
 
-if(session.getAttribute("username")!=null){
+Cookie[] cookies = request.getCookies();
+
+for(Cookie aCookie : cookies) {
+	if(aCookie.getName().equals("username")) {
+		if(aCookie.getValue() != null)
+			session.setAttribute("username", aCookie.getValue());
+	}
+}
+
+if(session.getAttribute("username")!=null) { 
 	response.sendRedirect("recapCorsisti.jsp");
 }
+
 if (err < 5) {
 	
 %>
@@ -64,7 +74,7 @@ if (err < 5) {
 					</div>
 					<div class="form-check small">
 						<label class="form-check-label"> <input type="checkbox"
-							class="form-check-input"> <span>Ricordami</span>
+							class="form-check-input" name="cookie" id="cookie" value="1"> <span>Ricordami</span>
 						</label>
 					</div>
 					<button type="submit" class="btn btn-primary btn-m float-right"
