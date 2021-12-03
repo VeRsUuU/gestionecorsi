@@ -78,6 +78,7 @@ if (admin != null) {
 					<th class="th-sm">Nome</th>
 					<th class="th-sm">Cognome</th>
 					<th class="th-sm">Precedenti formativi</th>
+					<th class="th-sm">Elimina corso</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -101,7 +102,7 @@ if (admin != null) {
 					}
 					%>
 						<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
-							class="btn btn-danger">Elimina corsi <i class="bi bi-trash"></i></a></td>
+							class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 					<%
 					}
 					%>
@@ -115,7 +116,7 @@ if (admin != null) {
 			<tbody align="center">
 				<tr>
 					<td><a class="btn btn-primary" href="inserisciCorsista.jsp">Inserisci
-							corsista</a></td>
+							corsista <i class="bi bi-plus-lg"></i></a></td>
 					<td>
 						<form
 							action="/<%=application.getServletContextName()%>/statistiche"
