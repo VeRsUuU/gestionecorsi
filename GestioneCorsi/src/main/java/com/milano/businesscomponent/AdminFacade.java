@@ -79,6 +79,12 @@ public class AdminFacade {
 		return totCommenti;
 	}
 
+	public int getDurataCorsi() throws DAOException, ClassNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC();
+		int days=corsoBC.durataCorsi();
+		return days;
+	}
+	
 	// metodi corsista
 
 	public void createCorsista(Corsista corsista)

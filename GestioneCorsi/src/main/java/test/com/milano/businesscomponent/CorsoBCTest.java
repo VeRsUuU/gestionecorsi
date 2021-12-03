@@ -110,6 +110,22 @@ class CorsoBCTest {
 
 	}
 	
+	@Test
+	@Order(6)
+	void testdurata() throws ClassNotFoundException, IOException {
+
+		System.out.println("durata in giorno dei corsi");
+
+		try {
+			CorsoBC bcCorso = new CorsoBC();
+			int com= bcCorso.durataCorsi();
+			System.out.println(com);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {

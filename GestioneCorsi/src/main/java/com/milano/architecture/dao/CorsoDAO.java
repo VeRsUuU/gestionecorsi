@@ -9,8 +9,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 
 import com.milano.businesscomponent.model.Corso;
 
@@ -18,6 +20,10 @@ public class CorsoDAO {
 
 	private final String SELECT_CORSI = "select * from corso";
 	private final String SELECT_CORSI_BYID = "select * from corso where cod_corso = ?";
+	
+	private final String SELECT_DURATA_CORSI="select data_inizio, data_fine\r\n"
+			+ "from corso\r\n"
+			+ "order by data_inizio desc";
 
 	public ArrayList<Corso> getAll(Connection conn) throws DAOException {
 		ArrayList<Corso> corsi = null;
@@ -115,6 +121,31 @@ public class CorsoDAO {
 			throw new DAOException(sql);
 		}
 		return a;
+	}
+	
+	public ArrayList<Long> durataCorsi(Connection conn) throws DAOException {
+		ArrayList<Long>durata = null;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SELECT_DURATA_CORSI);
+			Date dtInizio;
+			Date dtFine;
+			durata=new ArrayList<Long>();
+			while(rs.next()) {
+				dtInizio=rs.getDate(1);
+				dtFine=rs.getDate(2);
+				long in=dtInizio.getTime();
+				long fi=dtFine.getTime();
+				long d=(long)(fi-in);
+				long days = TimeUnit.MILLISECONDS.toDays(d);
+				durata.add(days);
+			}
+			
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		
+		return durata;
 	}
 
 }

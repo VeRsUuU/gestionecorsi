@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 
 import com.milano.architecture.dao.CorsoDAO;
 import com.milano.architecture.dao.DAOException;
@@ -60,8 +60,7 @@ public class CorsoBC {
 		
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			Connection conn = DBAccess.getConnection();
-			return corsoDAO.getinizioUltimo(conn);
+			return corsoDAO.getinizioUltimo(DBAccess.getConnection());
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
@@ -76,8 +75,7 @@ public class CorsoBC {
 		
 		try {
 			CorsoDAO corsoDAO = new CorsoDAO();
-			Connection conn = DBAccess.getConnection();
-			Integer totCommenti= corsoDAO.getotCommenti(conn) ;
+			Integer totCommenti= corsoDAO.getotCommenti(DBAccess.getConnection()) ;
 			return totCommenti;
 		} catch (SQLException e) {
 			throw new DAOException(e);
@@ -87,6 +85,26 @@ public class CorsoBC {
 		
 
 		
+	}
+	
+	public int durataCorsi() throws DAOException, ClassNotFoundException, IOException {
+		
+		try {
+			CorsoDAO corsoDAO = new CorsoDAO();
+			ArrayList<Long> giorni=new ArrayList<Long>();
+			giorni.addAll(corsoDAO.durataCorsi(DBAccess.getConnection()));
+			int somma=0;
+			for (int i = 0; i < giorni.size(); i++) {
+				somma+=giorni.get(i);
+			}
+			int media=(somma/giorni.size());
+			return media;
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	
 	}
 
 }

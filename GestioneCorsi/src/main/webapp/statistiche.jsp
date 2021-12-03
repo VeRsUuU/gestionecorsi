@@ -45,6 +45,8 @@ if(piuF.isEmpty() && elenco.length==0){
 		<%
 		} 
 }
+
+int days = AdminFacade.getIstance().getDurataCorsi();
 Integer tot=AdminFacade.getIstance().getotCorsisti();
 Corso corsodt=new Corso();
 corsodt=AdminFacade.getIstance().getDataUltimoCorso();
@@ -52,7 +54,8 @@ Integer totCommenti=AdminFacade.getIstance().getTotCommenti();
 Docente doc = new Docente();
 doc = AdminFacade.getIstance().getMaxCorsi();
 %>
-<p>numero totali corsisti <%= tot %></p>
+<p>numero totali corsisti : <%= tot %></p>
+<p>durata media di tutti i corsi : <%= days %></p>
 <p>nome dell'ultimo corso : <%= corsodt.getNome() %>, data inizio dell'ultimo corso : <%= corsodt.getDataInizio() %> </p>
 <p>numero totali commenti presenti : <%= totCommenti %></p>
 <p>nome e cognome docente max corsi : <%=doc.getNomeDocente()+"   " %><%= doc.getCognomeDocente() %> 
