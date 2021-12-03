@@ -46,8 +46,12 @@ public class InserisciCorsista extends HttpServlet {
 		list = Arrays.asList(corsi);
 		}
 		
+		if(nome!=null)
 		request.setAttribute("nome", nome);
+		
+		if(cognome!=null)
 		request.setAttribute("cognome", cognome);
+		
 		request.setAttribute("corsi", list);
 		
 		System.out.println(list);

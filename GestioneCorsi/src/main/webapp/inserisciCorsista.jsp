@@ -40,7 +40,7 @@
 		<div class="row" style="margin-top: 10px">
 		<div class="form-group col-md-6">
 			<label for="nome">Nome 
-			<input class="form-control" type="text" name="nome" <% if(request.getAttribute("nome") != null) {%> value="<%= request.getAttribute("nome") %> <% }%>">
+			<input class="form-control" type="text" name="nome" <% if(request.getAttribute("nome") != null) {%> value="<%= request.getAttribute("nome") %><% }%>">
 		</label>
 		</div>
 		<div class="col-md-4" style="padding-top: 30px; color: red; margin-left: 30px">
@@ -56,7 +56,7 @@
 		<div class="row">
 		<div class="form-group col-md-6" >
 			<label for="cognome">Cognome 
-			<input class="form-control" type="text" name="cognome" <% if(request.getAttribute("cognome") != null) {%> value="<%= request.getAttribute("cognome") %> <% }%>">
+			<input class="form-control" type="text" name="cognome" <% if(request.getAttribute("cognome") != null) {%> value="<%= request.getAttribute("cognome") %><% }%>">
 		</label>
 		</div>
 		<div class="col-md-4" style="padding-top: 30px;color: red; margin-left: 30px">
@@ -162,14 +162,27 @@
 			<div class="row" style="margin-bottom: 40px; margin-top: 30px">
 			<div class="col-md-4">
 				<label  for="dataInizio<%=corso.getCod()%>">Data inizio</label> 
-				<input type="text"
-					value="<%=formato.format(corso.getDataInizio())%>"
-					name="dataInizio<%=corso.getCod()%>" class="form-control-inline">
+				<input  value="<% if(request.getAttribute("dataInizio"+corso.getCod()) != null){
+					out.print(formato.format(request.getAttribute("dataInizio"+corso.getCod())));
+					} else{
+						out.print(formato.format(corso.getDataInizio()));
+					}
+					
+				%>"
+				type="text" name="dataInizio<%=corso.getCod()%>" class="form-control-inline">	
 			</div>
+			
+			
+			
 			<div class="col-md-4">
 				<label for="dataFine<%=corso.getCod()%>">Data fine
 				</label> 
-				<input type="text" value="<%=formato.format(corso.getDataFine())%>"
+				<input type="text" value="<% if(request.getAttribute("dataFine"+corso.getCod()) != null){
+						out.print(formato.format(request.getAttribute("dataFine"+corso.getCod())));
+					} else{
+						out.print(formato.format(corso.getDataInizio()));
+					}
+				%>"
 					name="dataFine<%=corso.getCod()%>" class="form-control-inline">
 			</div>
 			<div class="col-md-4">
