@@ -114,8 +114,8 @@ if (admin != null) {
 				<td><a class="btn btn-primary" href="inserisciCorsista.jsp">Inserisci
 						corsista <i class="bi bi-plus-lg"></i>
 				</a></td>
-				<td><a class="btn btn-success"> Visualizza statistiche <i
-						class="bi bi-bar-chart-fill"></i>
+				<td><a href="statistiche.jsp" class="btn btn-success">
+						Visualizza statistiche <i class="bi bi-bar-chart-fill"></i>
 				</a></td>
 			</tr>
 		</tbody>
