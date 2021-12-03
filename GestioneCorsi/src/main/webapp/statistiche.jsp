@@ -23,6 +23,51 @@ if (admin == null)
 <body>
 <jsp:include page="pageformat/nav.jsp"/>
 
+<div class="container" style="align: center;">
+		<div class="page-header">
+			<br>
+			<h2>Statistiche</h2>
+			<br> <br>
+		</div>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+		  	<tr>
+				<th>corsisti totali</th>
+				<th>nome del corso piu frequentato</th>
+				<th>data inzio ultimo corso</th>
+				<th>durata media dei corsi</th>
+				<th>numero commenti presenti</th>
+				<th>elenco corsiti</th>
+				<th>docente che puo tenere piu tpologie di corso</th>
+				<th>Corsi con posti disponibile</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		
+		<tr>
+				<td></td>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+
 <%
 ArrayList<Corso>piuF= new ArrayList<Corso>();
 piuF=AdminFacade.getIstance().getCorsoPiuFrequentato();
@@ -66,6 +111,7 @@ doc = AdminFacade.getIstance().getMaxCorsi();
 
 
 
+</div>
 <%@include file="pageformat/footer.html"%>
 </body>
 </html>
