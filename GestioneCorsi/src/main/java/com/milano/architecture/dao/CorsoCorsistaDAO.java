@@ -80,6 +80,43 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		}
 	}
 
+	/////
+	public HashMap<String, Integer> getMapPosti(Connection conn) throws DAOException{
+		String SELECT_POSTI_D="select nome_corso ,count(corso_corsista.cod_corso)as postioccupati\r\n"
+				+ "	from corso\r\n"
+				+ "	left join corso_corsista \r\n"
+				+ "	on corso_corsista.cod_corso = corso.cod_corso\r\n"
+				+ "	group by nome_corso\r\n";
+		
+		
+		try {	
+			HashMap<String, Integer> mappa = new HashMap<String, Integer>();
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_POSTI_D);
+			rs.beforeFirst();
+			int posti = 0;
+			while(rs.next()) {
+				String nome = rs.getString(1);
+				
+				posti = rs.getInt(2);
+				
+				mappa.put(nome,posti);
+			}
+
+			return mappa;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e);
+		}
+		
+		
+		
+		
+	}
+	
+	
+
 	public void delete(Connection conn, long idCorso, long idCorsista) throws DAOException {
 		try {
 			PreparedStatement ps = conn.prepareStatement("delete from corso_corsista where cod_corso = ? and cod_corsista = ?");

@@ -34,6 +34,24 @@ public class CorsoCorsistaBC {
 	}
 	
 	
+	public HashMap<String, Integer> getMapPosti() throws ClassNotFoundException, IOException, DAOException{
+
+		HashMap<String, Integer> mappa = null;
+		
+			try {
+				conn = DBAccess.getConnection();
+				CorsoCorsistaDAO ccDAO = new CorsoCorsistaDAO();
+				mappa = ccDAO.getMapPosti(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBAccess.closeConnection();
+			}
+		return mappa;
+		
+	}
+	
+	
 	
 	
 	public void create(long idCorso, long idCorsista) throws DAOException {

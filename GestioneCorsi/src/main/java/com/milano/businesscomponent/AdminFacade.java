@@ -165,8 +165,15 @@ public class AdminFacade {
 			throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
 		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		return ccBC.getAll();
-
 	}
+		
+		public HashMap<String, Integer> getPostiDisponibili()
+				throws ClassNotFoundException, DAOException, FileNotFoundException, IOException {
+			CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
+			return ccBC.getMapPosti();
+		}
+
+
 
 	// metodi docente
 
