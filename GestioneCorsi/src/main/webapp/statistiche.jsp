@@ -183,7 +183,7 @@ if (session.getAttribute("username") == null)
 
 
 			</div>
-			<div class="card-footer text-white">Design by geppo</div>
+			<div class="card-footer text-white">Design by Betacom Milano</div>
 		</div>
 
 
