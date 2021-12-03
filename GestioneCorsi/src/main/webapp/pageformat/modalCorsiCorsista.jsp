@@ -1,5 +1,9 @@
 
 <%
+String admin = (String) session.getAttribute("username");
+if (admin == null)
+	response.sendRedirect("accessonegato.jsp");
+
 long id;
 ArrayList<Corso> corsiCorsista;
 if (request.getParameter("id") != null) {
