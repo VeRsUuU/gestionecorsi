@@ -1,3 +1,11 @@
+<%
+String admin = (String) session.getAttribute("username");
+if (admin == null)
+	response.sendRedirect("accessonegato.jsp");
+%>
+
+
+
 <%@page import="com.milano.businesscomponent.model.Docente"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
