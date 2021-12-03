@@ -5,21 +5,19 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
-
 Cookie[] cookies = request.getCookies();
-if(cookies != null){
-	for(Cookie aCookie : cookies) {
-		if(aCookie.getName().equals("username")) {
-			System.out.println("cookie esiste");
-			if(aCookie.getValue() != null)
-				session.setAttribute("username", aCookie.getValue());
-				System.out.println("username impostato dal cookie" + aCookie.getValue());
+if (cookies != null) {
+	for (Cookie aCookie : cookies) {
+		if (aCookie.getName().equals("username")) {
+	System.out.println("cookie esiste");
+	if (aCookie.getValue() != null)
+		session.setAttribute("username", aCookie.getValue());
+	System.out.println("username impostato dal cookie" + aCookie.getValue());
 		}
 	}
 }
 String admin = (String) session.getAttribute("username");
 if (admin != null) {
-	
 %>
 
 <!DOCTYPE html>
@@ -49,7 +47,7 @@ if (admin != null) {
 			</thead>
 			<tbody align="center">
 				<%
-				if(session.getAttribute("username") != null) {
+				if (session.getAttribute("username") != null) {
 					String username = (String) session.getAttribute("username");
 					Admin amministratore = AdminFacade.getIstance().getByIdUsername(username);
 				%>
@@ -59,16 +57,14 @@ if (admin != null) {
 					<td><%=amministratore.getCognomeAdmin()%></td>
 				</tr>
 				<%
-				
-					}
-				
+				}
 				%>
 			</tbody>
 		</table>
 		<br> <br>
 	</div>
-	
-		<!-- CORSISTI -->
+
+	<!-- CORSISTI -->
 	<div class="container">
 		<h3 align="center">Riepilogo corsisti</h3>
 		<table class="datatable table table-striped table-bordered">
@@ -101,8 +97,8 @@ if (admin != null) {
 					<%
 					}
 					%>
-						<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
-							class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+					<td><a href="elimina.jsp?id=<%=c.getCodCorsista()%>"
+						class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
 					<%
 					}
 					%>
@@ -111,24 +107,19 @@ if (admin != null) {
 		</table>
 	</div>
 
-		<!-- PULSANTI -->
-		<table class="table table-striped">
-			<tbody align="center">
-				<tr>
-					<td><a class="btn btn-primary" href="inserisciCorsista.jsp">Inserisci
-							corsista <i class="bi bi-plus-lg"></i></a></td>
-					<td>
-						<form
-							action="/<%=application.getServletContextName()%>/statistiche"
-							method="post">
-							<button type="submit" class="btn btn-success">
-								Visualizza statistiche <i class="bi bi-bar-chart-fill"></i>
-							</button>
-						</form>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<!-- PULSANTI -->
+	<table class="table table-striped">
+		<tbody align="center">
+			<tr>
+				<td><a class="btn btn-primary" href="inserisciCorsista.jsp">Inserisci
+						corsista <i class="bi bi-plus-lg"></i>
+				</a></td>
+				<td><a class="btn btn-success"> Visualizza statistiche <i
+						class="bi bi-bar-chart-fill"></i>
+				</a></td>
+			</tr>
+		</tbody>
+	</table>
 	<br>
 	<br>
 	<%@include file="pageformat/footer.html"%>
