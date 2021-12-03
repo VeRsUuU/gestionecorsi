@@ -7,16 +7,16 @@
 <%
 
 Cookie[] cookies = request.getCookies();
-
-for(Cookie aCookie : cookies) {
-	if(aCookie.getName().equals("username")) {
-		System.out.println("cookie esiste");
-		if(aCookie.getValue() != null)
-			session.setAttribute("username", aCookie.getValue());
-			System.out.println("username impostato dal cookie" + aCookie.getValue());
+if(cookies != null){
+	for(Cookie aCookie : cookies) {
+		if(aCookie.getName().equals("username")) {
+			System.out.println("cookie esiste");
+			if(aCookie.getValue() != null)
+				session.setAttribute("username", aCookie.getValue());
+				System.out.println("username impostato dal cookie" + aCookie.getValue());
+		}
 	}
 }
-
 String admin = (String) session.getAttribute("username");
 if (admin != null) {
 	

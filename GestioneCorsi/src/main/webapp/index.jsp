@@ -21,14 +21,14 @@ if (err == 5){
 }
 
 Cookie[] cookies = request.getCookies();
-
-for(Cookie aCookie : cookies) {
-	if(aCookie.getName().equals("username")) {
-		if(aCookie.getValue() != null)
-			session.setAttribute("username", aCookie.getValue());
+if(cookies != null){
+	for(Cookie aCookie : cookies) {
+		if(aCookie.getName().equals("username")) {
+			if(aCookie.getValue() != null)
+				session.setAttribute("username", aCookie.getValue());
+		}
 	}
 }
-
 if(session.getAttribute("username")!=null) { 
 	response.sendRedirect("recapCorsisti.jsp");
 }
