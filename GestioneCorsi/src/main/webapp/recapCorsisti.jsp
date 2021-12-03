@@ -38,7 +38,7 @@ if (admin != null) {
 <link rel="stylesheet" type="text/css" href="tabledesign/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" type="text/css" href="tabledesign/css2/util.css">
 <link rel="stylesheet" type="text/css" href="tabledesign/css2/main.css">
-<title>Tabella</title>
+<title>Riepilogo corsisti</title>
 </head>
 <body>
 <jsp:include page="pageformat/nav.jsp" />
